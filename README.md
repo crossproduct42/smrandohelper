@@ -1,5 +1,6 @@
 # smrandohelper
-Super Metroid Rando Helper by twitch.tv/crossproduct
+Super Metroid Rando Helper by http://twitch.tv/crossproduct
+If you like the tracker, please consider following me on Twitch!
 
 v0.4
 Left side of the tracker is done, and the toggle buttons will change the frame on the right. So far the only right-side frame that does anything is the RidleyCalc. RidleyCalc should be fully functional (and programmed in multiple techniques!), but I will probably make cosmetic changes soon (replacing some text with icons of missiles, etc)

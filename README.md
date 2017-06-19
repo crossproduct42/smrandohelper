@@ -1,5 +1,6 @@
 # smrandohelper
 Super Metroid Rando Helper by http://twitch.tv/crossproduct
+
 If you like the tracker, please consider following me on Twitch!
 
 v0.4

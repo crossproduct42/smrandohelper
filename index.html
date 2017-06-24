@@ -15,7 +15,7 @@
   <script src="script/functions.js"></script>
 
   <script>
-  panels = ["map", "ridley", "mbrain", "skill", "option"];
+  panels = ['map', 'ridley', 'mbrain', 'skill', 'option'];
   activePanel = 0;
   beam = 0;
   </script>
@@ -50,7 +50,7 @@
 
         document.write("</div>");
         var current = document.getElementById(itemList[k]);
-        current.style.backgroundImage = "url("+ammo[itemList[k]].icon+")";
+        current.style.backgroundImage = 'url('+ammo[itemList[k]].icon+')';
         current.style.width = ammo[itemList[k]].w;
         current.style.height = ammo[itemList[k]].h;
         current.style.left = ammo[itemList[k]].x;
@@ -65,7 +65,7 @@
         document.write('<span class="item false" id="'+itemList[k]+'" onClick="toggle(\''+itemList[k]+'\')"></span>');
 
         var current = document.getElementById(itemList[k]);
-        current.style.backgroundImage = "url("+items[itemList[k]].icon+")";
+        current.style.backgroundImage = 'url('+items[itemList[k]].icon+')';
         current.style.left = items[itemList[k]].x;
         current.style.top = items[itemList[k]].y;
       }

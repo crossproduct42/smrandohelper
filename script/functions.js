@@ -1,11 +1,11 @@
 (function(window) {
     'use strict';
 
-    window.displayAmmo = function(type){
+    window.displayAmmo = function(type) {
         var amount = ammo[type].value;
 
         // only missiles go over 100
-        if(type === "missile"){
+        if (type === "missile") {
             var hundreds = Math.floor(amount/100);
             document.getElementById("ammo-missile-100").style.backgroundImage = "url(numbers/"+hundreds+".png)";
             amount -= 100*hundreds;
@@ -19,20 +19,17 @@
     };
 
     // increments Missile, Super, or Power Bomb count
-    window.incAmmo = function(type, amount){
-            ammo[type].value += amount;
-            if(ammo[type].value < 0)
-                ammo[type].value = 0;
-            if(type==="missile" && ammo[type].value > 995)
-                ammo[type].value = 995;
-            if(type!="missile" && ammo[type].value > 95)
-                ammo[type].value = 95;
-            displayAmmo(type);
-            ridleyCalc();
+    window.incAmmo = function(type, amount) {
+        ammo[type].value += amount;
+        if (ammo[type].value < 0) ammo[type].value = 0;
+        if (type === "missile" && ammo[type].value > 995) ammo[type].value = 995;
+        if (type !== "missile" && ammo[type].value > 95) ammo[type].value = 95;
+        displayAmmo(type);
+        ridleyCalc();
     };
 
     // Toggles items on the tracker (besides ammo)
-    window.toggle = function(x){
+    window.toggle = function(x) {
         items[x].value = !items[x].value;
         document.getElementById(x).className = "item " + items[x].value;
 
@@ -50,16 +47,13 @@
     };
 
     // Toggles the Golden Statues
-    window.toggleBoss = function(x){
+    window.toggleBoss = function(x) {
         bosses[x] = !bosses[x];
-        if(bosses[x])
-            document.getElementById(x).className = "true";
-        else
-            document.getElementById(x).className = "falseBoss";
+        document.getElementById(x).className = bosses[x] ? "true" : "falseBoss";
     };
 
     // Procedure for clicking the panel buttons in the middle
-    window.togglePanel = function(x){
+    window.togglePanel = function(x) {
         document.getElementById("button-"+panels[activePanel]).className = "panel-button falseBoss";
         document.getElementById("panel-"+panels[activePanel]).className = "panel inactive";
 
@@ -68,59 +62,41 @@
         activePanel = x;
     };
 
-    window.getBeamDamage = function(){
-        if(!items.charge.value)
-            return 0;
+    window.getBeamDamage = function() {
+        if (!items.charge.value) return 0;
 
-        var combo = 1; //charge
-        if(items.ice.value)
-            combo += 2; //ice
-        if(items.wave.value)
-            combo += 4; //wave
-        if(items.spazer.value && !items.plasma.value)
-            combo += 8; //spazer
-        if(items.plasma.value)
-            combo += 16; //plasma
+        var combo = 1; // charge
+        if (items.ice.value) combo += 2; // ice
+        if (items.wave.value) combo += 4; // wave
+        if (items.spazer.value && !items.plasma.value) combo += 8; // spazer
+        if (items.plasma.value) combo += 16; // plasma
 
-        switch(combo){
-            case 1:
-                return 60;  //charge
-            case 3:
-                return 90;  //charge + ice
-            case 5:
-                return 150; //charge + wave
-            case 7:
-                return 180; //charge + ice + wave
-            case 9:
-                return 120; //charge + spazer
-            case 11:
-                return 180; //charge + ice + spazer
-            case 13:
-                return 210; //charge + wave + spazer
-            case 15:
-                return 300; //charge + ice + wave + spazer
+        switch(combo) {
+            case 1: return 60; //charge
+            case 3: return 90; //charge + ice
+            case 5: return 150; //charge + wave
+            case 7: return 180; //charge + ice + wave
+            case 9: return 120; //charge + spazer
+            case 11: return 180; //charge + ice + spazer
+            case 13: return 210; //charge + wave + spazer
+            case 15: return 300; //charge + ice + wave + spazer
 
-            case 17:
-                return 450; //charge + plasma
-            case 19:
-                return 600; //charge + ice + plasma
-            case 21:
-                return 750; //charge + wave + plasma
-            case 23:
-                return 900; //charge + ice + wave + plasma
+            case 17: return 450; //charge + plasma
+            case 19: return 600; //charge + ice + plasma
+            case 21: return 750; //charge + wave + plasma
+            case 23: return 900; //charge + ice + wave + plasma
 
-            default:
-                return 0;   // No Charge
+            default: return 0; // No Charge
         }
     };
 
     // Solve for Ridley! Writes inside the ridley-strat <div> with best boss fight strategy!
-    window.ridleyCalc = function(){
+    window.ridleyCalc = function() {
         var strategy = "";
 
         // No ammo?
-        if(ammo.missile.value===0 && ammo.supermissile.value===0 && ammo.powerbomb.value===0){
-            if(beam===0){
+        if (ammo.missile.value === 0 && ammo.supermissile.value === 0 && ammo.powerbomb.value === 0) {
+            if (beam === 0) {
                 document.getElementById("ridley-strat").innerHTML = "FIND SOME AMMO or CHARGE BEAM, N00B!";
                 return;
             }
@@ -134,25 +110,24 @@
         }
 
         // No charge beam = Ammo only
-        if(beam===0){
+        if (beam === 0) {
             strategy = "NO CHARGE BEAM!<hr>Maxiumum damage: ";
             var maxDamage = 100*ammo.missile.value + 600*ammo.supermissile.value + 400*ammo.powerbomb.value;
             strategy += maxDamage + "<br><br>";
-            if(maxDamage < 18000)
+            if (maxDamage < 18000)
                 strategy += "Not enough ammo to kill Ridley!";
+            else if (maxDamage === 18000)
+                strategy += "Just enough... DON'T BLOW IT!";
             else
-                if(maxDamage === 18000)
-                    strategy += "Just enough... DON'T BLOW IT!";
-                else
-                    strategy += "Extra damage: " + (maxDamage-18000) + "<br>(That's "+Math.floor((maxDamage-18000)/600)+" supers)<br><br>You got this!!";
+                strategy += "Extra damage: " + (maxDamage-18000) + "<br>(That's "+Math.floor((maxDamage-18000)/600)+" supers)<br><br>You got this!!";
 
             document.getElementById("ridley-strat").innerHTML = strategy;
             return;
         }
 
         // Charge+Ice+Wave+Plasma = Beam or Supers
-        if(beam===900){
-            if(ammo.supermissile.value === 0){
+        if (beam === 900) {
+            if (ammo.supermissile.value === 0) {
                 document.getElementById("ridley-strat").innerHTML = "20 charge shots.<br><br>(9 shots after Ridley turns red.)";
                 return;
             }
@@ -160,13 +135,14 @@
             strategy = "20 charge shots<br><br>>> OR << <br><br>";
             var beyond = "";
 
-            if(ammo.supermissile.value>=30){
-                if (ammo.supermissile.value>30)
+            if (ammo.supermissile.value >= 30) {
+                if (ammo.supermissile.value > 30) {
                     beyond = " (beyond "+(ammo.supermissile.value-30)+")";
+                }
                 strategy += "30 supers. ";
             } else {
                 var theOddOne = 0;
-                if(ammo.supermissile.value % 3 === 1){
+                if (ammo.supermissile.value % 3 === 1) {
                     theOddOne = 1;
                     beyond = " (beyond 1)";
                 }
@@ -179,30 +155,32 @@
         }
 
         // Other plasma combo (or the 4 other beams) = Supers, then beam
-        if(beam>=300){
-            if(ammo.supermissile.value === 0){
+        if (beam >= 300) {
+            if (ammo.supermissile.value === 0) {
                 document.getElementById("ridley-strat").innerHTML = (18000/beam) + " charge shots.<br><br>("+(9000/beam-1)+" shots after Ridley turns red.)";
                 return;
             }
 
             var beyond = "";
 
-            if(ammo.supermissile.value>=30){
-                if (ammo.supermissile.value>30)
+            if (ammo.supermissile.value >= 30) {
+                if (ammo.supermissile.value > 30) {
                     beyond = " (beyond "+(ammo.supermissile.value-30)+")";
+                }
                 strategy += "30 supers.<br><br>";
             } else {
                 var supes = ammo.supermissile.value;
                 var charges = Math.ceil((18000-600*supes)/beam);
                 strategy += charges + " charge shots"
-            // Red phase
-            if(ammo.supermissile.value<15)
-                strategy += " (" + (charges - 9000/beam - 1) + " shots after Ridley turns red)";
-            strategy += ", then " + supes + " supers.<br><br>";
+                // Red phase
+                if (ammo.supermissile.value < 15) {
+                    strategy += " (" + (charges - 9000/beam - 1) + " shots after Ridley turns red)";
+                }
+                strategy += ", then " + supes + " supers.<br><br>";
             }
 
             strategy += "For each miss" + beyond + ", add "+(Math.round(6000/beam)/10)+" charge shot";
-            if(beam != 600)
+            if (beam !== 600)
                 strategy += "s";
             strategy += ".";
 
@@ -211,10 +189,11 @@
         }
 
         // any beam combo less than 300 damage
-        if(ammo.supermissile.value>=30){
+        if (ammo.supermissile.value >= 30) {
             var beyond = "";
-            if (ammo.supermissile.value>30)
+            if (ammo.supermissile.value > 30) {
                 beyond = " (beyond "+(ammo.supermissile.value-30)+")";
+            }
             strategy += "30 supers.<br><br>";
             strategy += "For each miss" + beyond + ", add 6 missiles or "+(Math.round(6000/beam)/10)+" charge shots.";
             document.getElementById("ridley-strat").innerHTML = strategy;
@@ -222,7 +201,7 @@
         }
 
         // Enough missiles + supers?
-        if(ammo.missile.value + 6*ammo.supermissile.value >= 180){
+        if (ammo.missile.value + 6*ammo.supermissile.value >= 180) {
             strategy += (180 - 6*ammo.supermissile.value) + " missiles, then " + ammo.supermissile.value + " supers.<br><br>";
             strategy += "1 super<br>=<br>6 missiles<br>=<br>" +(Math.round(6000/beam)/10)+ " charge shots";
             document.getElementById("ridley-strat").innerHTML = strategy;
@@ -230,16 +209,16 @@
         }
 
         // using missiles before Red Phase...
-        if(ammo.missile.value + 6*ammo.supermissile.value > 90){
+        if (ammo.missile.value + 6*ammo.supermissile.value > 90) {
             var hp = 18000 - 600*ammo.supermissile.value - 100*ammo.missile.value;
             // Use Power Bombs?
-            if(ammo.powerbomb.value > 0 && beam < 100){
+            if (ammo.powerbomb.value > 0 && beam < 100) {
                 var pbdam = Math.min(hp, 400*ammo.powerbomb.value);
                 hp -= pbdam;
                 pbdam = Math.ceil(pbdam/200);
                 strategy += "PB for " + pbdam + " hits. ("+(Math.round(2000/beam)/10)+" shots per miss)<br><br>Then, ";
             }
-            if(hp > 0){
+            if (hp > 0) {
                 strategy += Math.ceil(hp/beam) + " shots.<br><br>Then, ";
             }
             strategy += "use missiles.<br><br>"
@@ -252,13 +231,13 @@
 
         // Start Missiles after Red Phase
         strategy += "Use ";
-        if(ammo.powerbomb.value > 0 && beam < 100){
+        if (ammo.powerbomb.value > 0 && beam < 100) {
             strategy += "Power Bombs and ";
         }
         strategy += "charge shots.<hr>RED RIDLEY<hr>";
 
         hp = 9000 - 600*ammo.supermissile.value - 100*ammo.missile.value;
-        if(hp > 0){
+        if (hp > 0) {
             strategy += Math.ceil(hp/beam) + " shots.<br><br>";
         }
 

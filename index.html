@@ -25,10 +25,10 @@
   <div id="app">
     <div id="tracker">
       <div id="g4">
-        <span id="kraid" onClick="toggle_boss('kraid')" class="falseBoss"></span>
-        <span id="phantoon" onClick="toggle_boss('phantoon')" class="falseBoss"></span>
-        <span id="draygon" onClick="toggle_boss('draygon')" class="falseBoss"></span>
-        <span id="ridley" onClick="toggle_boss('ridley')" class="falseBoss"></span>
+        <span id="kraid" onClick="toggle_boss('kraid')" class="false"></span>
+        <span id="phantoon" onClick="toggle_boss('phantoon')" class="false"></span>
+        <span id="draygon" onClick="toggle_boss('draygon')" class="false"></span>
+        <span id="ridley" onClick="toggle_boss('ridley')" class="false"></span>
       </div>
 
       <script>
@@ -75,26 +75,26 @@
 
     <!--- Buttons to switch the panels on the right side -->
     <div id="menu">
-      <span id="button-map" onClick="toggle_panel(0)" class="panel-button true" style="background-image:url(overlay/button-map.png); top:0px;"></span>
-      <span id="button-ridley" onClick="toggle_panel(1)" class="panel-button falseBoss" style="background-image:url(overlay/button-ridley.png); top:60px;"></span>
-      <span id="button-mbrain" onClick="toggle_panel(2)" class="panel-button falseBoss" style="background-image:url(overlay/button-mbrain.png); top:120px;"></span>
-      <span id="button-skill" onClick="toggle_panel(3)" class="panel-button falseBoss" style="background-image:url(overlay/button-skill.png); top:180px;"></span>
-      <span id="button-option" onClick="toggle_panel(4)" class="panel-button falseBoss" style="background-image:url(overlay/button-option.png); top:240px;"></span>
+      <span id="button-map" onClick="toggle_panel(0)" class="panel-button active" style="background-image:url(overlay/button-map.png); top:0px;"></span>
+      <span id="button-ridley" onClick="toggle_panel(1)" class="panel-button" style="background-image:url(overlay/button-ridley.png); top:60px;"></span>
+      <span id="button-mbrain" onClick="toggle_panel(2)" class="panel-button" style="background-image:url(overlay/button-mbrain.png); top:120px;"></span>
+      <span id="button-skill" onClick="toggle_panel(3)" class="panel-button" style="background-image:url(overlay/button-skill.png); top:180px;"></span>
+      <span id="button-option" onClick="toggle_panel(4)" class="panel-button" style="background-image:url(overlay/button-option.png); top:240px;"></span>
     </div>
 
     <div id="panels">
       <div id="panel-map" class="panel active" style="background-color:red;"></div>
 
       <!-- RIDLEY CALCULATOR -->
-      <div id="panel-ridley" class="panel inactive" style="background-image:url(overlay/ridleymath.png);">
+      <div id="panel-ridley" class="panel" style="background-image:url(overlay/ridleymath.png);">
         <div id="ridley-beam-100" class="digit" style="top:113; left:46; background-image:url(numbers/0.png);"></div>
         <div id="ridley-beam-10" class="digit" style="top:113; left:78; background-image:url(numbers/0.png);"></div>
         <div id="ridley-strategy"></div>
       </div>
 
-      <div id="panel-mbrain" class="panel inactive" style="background-color:green;"></div>
-      <div id="panel-skill" class="panel inactive" style="background-color:blue;"></div>
-      <div id="panel-option" class="panel inactive" style="background-color:purple;"></div>
+      <div id="panel-mbrain" class="panel" style="background-color:green;"></div>
+      <div id="panel-skill" class="panel" style="background-color:blue;"></div>
+      <div id="panel-option" class="panel" style="background-color:purple;"></div>
     </div>
   </div>
 

@@ -49,15 +49,15 @@
     // Toggles the Golden Statues
     window.toggle_boss = function(x) {
         bosses[x] = !bosses[x];
-        document.getElementById(x).className = bosses[x] ? 'true' : 'falseBoss';
+        document.getElementById(x).className = bosses[x] ? 'true' : 'false';
     };
 
     // Procedure for clicking the panel buttons in the menu
     window.toggle_panel = function(x) {
-        document.getElementById('button-'+panels[active_panel]).className = 'panel-button falseBoss';
-        document.getElementById('panel-'+panels[active_panel]).className = 'panel inactive';
+        document.getElementById('button-'+panels[active_panel]).className = 'panel-button';
+        document.getElementById('panel-'+panels[active_panel]).className = 'panel';
 
-        document.getElementById('button-'+panels[x]).className = 'panel-button true';
+        document.getElementById('button-'+panels[x]).className = 'panel-button active';
         document.getElementById('panel-'+panels[x]).className = 'panel active';
         active_panel = x;
     };

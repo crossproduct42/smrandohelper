@@ -16,7 +16,7 @@
 
   <script>
   panels = ['map', 'ridley', 'mbrain', 'skill', 'option'];
-  activePanel = 0;
+  active_panel = 0;
   beam = 0;
   </script>
 </head>
@@ -25,49 +25,49 @@
   <div id="the-whole-thing">
     <div id="left-side">
       <div id="g4">
-        <span id="kraid" onClick="toggleBoss('kraid')" class="falseBoss"></span>
-        <span id="phantoon" onClick="toggleBoss('phantoon')" class="falseBoss"></span>
-        <span id="draygon" onClick="toggleBoss('draygon')" class="falseBoss"></span>
-        <span id="ridley" onClick="toggleBoss('ridley')" class="falseBoss"></span>
+        <span id="kraid" onClick="toggle_boss('kraid')" class="falseBoss"></span>
+        <span id="phantoon" onClick="toggle_boss('phantoon')" class="falseBoss"></span>
+        <span id="draygon" onClick="toggle_boss('draygon')" class="falseBoss"></span>
+        <span id="ridley" onClick="toggle_boss('ridley')" class="falseBoss"></span>
       </div>
 
       <script>
       // All the elements for Missile, Supers, Power Bombs
-      var itemList = Object.keys(ammo);
-      for (var k = 0; k < itemList.length; k++) {
-        document.write('<div id="'+itemList[k]+'">');
-          document.write('<div onClick="incAmmo(\''+itemList[k]+'\',1)" style="width:100%; height:100%;"></div>');
+      var item_list = Object.keys(ammo);
+      for (var k = 0; k < item_list.length; k++) {
+        document.write('<div id="'+item_list[k]+'">');
+          document.write('<div onClick="inc_ammo(\''+item_list[k]+'\',1)" style="width:100%; height:100%;"></div>');
 
           // ammo counters
-          document.write('<div class="digit" id="ammo-'+itemList[k]+'-1" style="background-image:url(numbers/0.png); right:0px;"></div>');
-          document.write('<div class="digit" id="ammo-'+itemList[k]+'-10" style="background-image:url(numbers/0.png); right:32px;"></div>');
+          document.write('<div class="digit" id="ammo-'+item_list[k]+'-1" style="background-image:url(numbers/0.png); right:0px;"></div>');
+          document.write('<div class="digit" id="ammo-'+item_list[k]+'-10" style="background-image:url(numbers/0.png); right:32px;"></div>');
         if (k === 0)
-          document.write('<div class="digit" id="ammo-'+itemList[k]+'-100" style="background-image:url(numbers/0.png);"></div>');
+          document.write('<div class="digit" id="ammo-'+item_list[k]+'-100" style="background-image:url(numbers/0.png);"></div>');
 
           // ammo increment buttons
-          document.write('<div onClick="incAmmo(\''+itemList[k]+'\',5)" style="background-image:url(numbers/plus.png); right:-20px; top:3px; width:20px; height:28px;"></div>');
-          document.write('<div onClick="incAmmo(\''+itemList[k]+'\',-5)" style="background-image:url(numbers/minus.png); right:-20px; bottom:3px; width:20px; height:28px;"></div>');
+          document.write('<div onClick="inc_ammo(\''+item_list[k]+'\',5)" style="background-image:url(numbers/plus.png); right:-20px; top:3px; width:20px; height:28px;"></div>');
+          document.write('<div onClick="inc_ammo(\''+item_list[k]+'\',-5)" style="background-image:url(numbers/minus.png); right:-20px; bottom:3px; width:20px; height:28px;"></div>');
 
         document.write("</div>");
-        var current = document.getElementById(itemList[k]);
-        current.style.backgroundImage = 'url('+ammo[itemList[k]].icon+')';
-        current.style.width = ammo[itemList[k]].w;
-        current.style.height = ammo[itemList[k]].h;
-        current.style.left = ammo[itemList[k]].x;
-        current.style.top = ammo[itemList[k]].y;
+        var current = document.getElementById(item_list[k]);
+        current.style.backgroundImage = 'url('+ammo[item_list[k]].icon+')';
+        current.style.width = ammo[item_list[k]].w;
+        current.style.height = ammo[item_list[k]].h;
+        current.style.left = ammo[item_list[k]].x;
+        current.style.top = ammo[item_list[k]].y;
 
-        displayAmmo(itemList[k]);
+        display_ammo(item_list[k]);
       }
 
       // All the other stuff
-      itemList = Object.keys(items);
-      for (var k = 0; k < itemList.length; k++) {
-        document.write('<span class="item false" id="'+itemList[k]+'" onClick="toggle(\''+itemList[k]+'\')"></span>');
+      item_list = Object.keys(items);
+      for (var k = 0; k < item_list.length; k++) {
+        document.write('<span class="item false" id="'+item_list[k]+'" onClick="toggle(\''+item_list[k]+'\')"></span>');
 
-        var current = document.getElementById(itemList[k]);
-        current.style.backgroundImage = 'url('+items[itemList[k]].icon+')';
-        current.style.left = items[itemList[k]].x;
-        current.style.top = items[itemList[k]].y;
+        var current = document.getElementById(item_list[k]);
+        current.style.backgroundImage = 'url('+items[item_list[k]].icon+')';
+        current.style.left = items[item_list[k]].x;
+        current.style.top = items[item_list[k]].y;
       }
       </script>
 
@@ -75,11 +75,11 @@
 
     <!--- Buttons to switch the panels on the right side -->
     <div id="middle">
-      <span id="button-map" onClick="togglePanel(0)" class="panel-button true" style="background-image:url(overlay/button-map.png); top:0px;"></span>
-      <span id="button-ridley" onClick="togglePanel(1)" class="panel-button falseBoss" style="background-image:url(overlay/button-ridley.png); top:60px;"></span>
-      <span id="button-mbrain" onClick="togglePanel(2)" class="panel-button falseBoss" style="background-image:url(overlay/button-mbrain.png); top:120px;"></span>
-      <span id="button-skill" onClick="togglePanel(3)" class="panel-button falseBoss" style="background-image:url(overlay/button-skill.png); top:180px;"></span>
-      <span id="button-option" onClick="togglePanel(4)" class="panel-button falseBoss" style="background-image:url(overlay/button-option.png); top:240px;"></span>
+      <span id="button-map" onClick="toggle_panel(0)" class="panel-button true" style="background-image:url(overlay/button-map.png); top:0px;"></span>
+      <span id="button-ridley" onClick="toggle_panel(1)" class="panel-button falseBoss" style="background-image:url(overlay/button-ridley.png); top:60px;"></span>
+      <span id="button-mbrain" onClick="toggle_panel(2)" class="panel-button falseBoss" style="background-image:url(overlay/button-mbrain.png); top:120px;"></span>
+      <span id="button-skill" onClick="toggle_panel(3)" class="panel-button falseBoss" style="background-image:url(overlay/button-skill.png); top:180px;"></span>
+      <span id="button-option" onClick="toggle_panel(4)" class="panel-button falseBoss" style="background-image:url(overlay/button-option.png); top:240px;"></span>
     </div>
 
     <div id="right-side">
@@ -99,8 +99,8 @@
   </div>
 
   <script>
-  togglePanel(1);
-  ridleyCalc();
+  toggle_panel(1);
+  ridley_calc();
   </script>
 
 </body>

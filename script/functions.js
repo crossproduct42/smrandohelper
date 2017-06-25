@@ -1,7 +1,7 @@
 (function(window) {
     'use strict';
 
-    window.displayAmmo = function(type) {
+    window.display_ammo = function(type) {
         var amount = ammo[type].value;
 
         // only missiles go over 100
@@ -19,13 +19,13 @@
     };
 
     // increments Missile, Super, or Power Bomb count
-    window.incAmmo = function(type, amount) {
+    window.inc_ammo = function(type, amount) {
         ammo[type].value += amount;
         if (ammo[type].value < 0) ammo[type].value = 0;
         if (type === 'missile' && ammo[type].value > 995) ammo[type].value = 995;
         if (type !== 'missile' && ammo[type].value > 95) ammo[type].value = 95;
-        displayAmmo(type);
-        ridleyCalc();
+        display_ammo(type);
+        ridley_calc();
     };
 
     // Toggles items on the tracker (besides ammo)
@@ -34,7 +34,7 @@
         document.getElementById(x).className = 'item ' + items[x].value;
 
         // put IF statement for beams later...
-        beam = getBeamDamage();
+        beam = get_beam_damage();
         var amount = beam;
         var hundreds = Math.floor(amount/100);
         document.getElementById('ridley-beam-100').style.backgroundImage = 'url(numbers/'+hundreds+'.png)';
@@ -43,26 +43,26 @@
         var tens = amount/10;
         document.getElementById('ridley-beam-10').style.backgroundImage = 'url(numbers/'+tens+'.png)';
 
-        ridleyCalc();
+        ridley_calc();
     };
 
     // Toggles the Golden Statues
-    window.toggleBoss = function(x) {
+    window.toggle_boss = function(x) {
         bosses[x] = !bosses[x];
         document.getElementById(x).className = bosses[x] ? 'true' : 'falseBoss';
     };
 
     // Procedure for clicking the panel buttons in the middle
-    window.togglePanel = function(x) {
-        document.getElementById('button-'+panels[activePanel]).className = 'panel-button falseBoss';
-        document.getElementById('panel-'+panels[activePanel]).className = 'panel inactive';
+    window.toggle_panel = function(x) {
+        document.getElementById('button-'+panels[active_panel]).className = 'panel-button falseBoss';
+        document.getElementById('panel-'+panels[active_panel]).className = 'panel inactive';
 
         document.getElementById('button-'+panels[x]).className = 'panel-button true';
         document.getElementById('panel-'+panels[x]).className = 'panel active';
-        activePanel = x;
+        active_panel = x;
     };
 
-    window.getBeamDamage = function() {
+    window.get_beam_damage = function() {
         if (!items.charge.value) return 0;
 
         var combo = 1; // charge
@@ -91,7 +91,7 @@
     };
 
     // Solve for Ridley! Writes inside the ridley-strat <div> with best boss fight strategy!
-    window.ridleyCalc = function() {
+    window.ridley_calc = function() {
         var strategy = '';
 
         // No ammo?
@@ -112,14 +112,14 @@
         // No charge beam = Ammo only
         if (beam === 0) {
             strategy = 'NO CHARGE BEAM!<hr>Maxiumum damage: ';
-            var maxDamage = 100*ammo.missile.value + 600*ammo.supermissile.value + 400*ammo.powerbomb.value;
-            strategy += maxDamage + '<br><br>';
-            if (maxDamage < 18000)
+            var max_damage = 100*ammo.missile.value + 600*ammo.supermissile.value + 400*ammo.powerbomb.value;
+            strategy += max_damage + '<br><br>';
+            if (max_damage < 18000)
                 strategy += 'Not enough ammo to kill Ridley!';
-            else if (maxDamage === 18000)
+            else if (max_damage === 18000)
                 strategy += 'Just enough... DON\'T BLOW IT!';
             else
-                strategy += 'Extra damage: ' + (maxDamage-18000) + '<br>(That\'s '+Math.floor((maxDamage-18000)/600)+' supers)<br><br>You got this!!';
+                strategy += 'Extra damage: ' + (max_damage-18000) + '<br>(That\'s '+Math.floor((max_damage-18000)/600)+' supers)<br><br>You got this!!';
 
             document.getElementById('ridley-strat').innerHTML = strategy;
             return;

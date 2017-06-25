@@ -85,6 +85,12 @@ div { position: absolute; background-color: transparent; }
   left: 350px;
 }
 
+#button-map { top:0px; background-image: url(overlay/button-map.png); }
+#button-ridley { top:60px; background-image: url(overlay/button-ridley.png); }
+#button-mbrain { top:120px; background-image: url(overlay/button-mbrain.png); }
+#button-skill { top:180px; background-image: url(overlay/button-skill.png); }
+#button-option { top:240px; background-image: url(overlay/button-option.png); }
+
 #panels {
   width: 0px;
   height: 100%;

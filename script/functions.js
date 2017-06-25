@@ -49,7 +49,7 @@
     // Toggles the Golden Statues
     window.toggle_boss = function(x) {
         bosses[x] = !bosses[x];
-        document.getElementById(x).className = bosses[x] ? 'true' : 'false';
+        document.getElementById(x).className = bosses[x] ? 'boss defeated' : 'boss';
     };
 
     // Procedure for clicking the panel buttons in the menu

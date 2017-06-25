@@ -81,6 +81,9 @@ div { position: absolute; background-color: transparent; }
   background-image: url(g4/ridley.png);
 }
 
+.boss { opacity: 0; }
+.boss.defeated { opacity: 1; }
+
 .item { width: 48px; height: 48px; position: absolute; }
 .digit { width: 32px; height: 28px; bottom: -28px; }
 
@@ -104,7 +107,6 @@ div { position: absolute; background-color: transparent; }
 
 .true { opacity: 1; }
 .false { opacity: .25; }
-#g4 .false { opacity: 0; }
 
 #ridley-strategy {
   width: 158px;

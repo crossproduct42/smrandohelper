@@ -1,6 +1,8 @@
 body { background-color: #101010; cursor: default; }
 
-#the-whole-thing {
+div { position: absolute; background-color: transparent; }
+
+#app {
   width: 826px;
   height: 337px;
   top: 1px;
@@ -9,7 +11,7 @@ body { background-color: #101010; cursor: default; }
   background-image: url(overlay/full_border.png);
 }
 
-#left-side {
+#tracker {
   width: 308px;
   height: 301px;
   top: 18px;
@@ -17,14 +19,14 @@ body { background-color: #101010; cursor: default; }
   background-color: black;
 }
 
-#middle {
+#menu {
   width: 126px;
   height: 288px;
   top: 24px;
   left: 350px;
 }
 
-#right-side {
+#panels {
   width: 0px;
   height: 100%;
   right: 0px;
@@ -49,7 +51,7 @@ body { background-color: #101010; cursor: default; }
   background-image: url(g4/kraid.png);
 }
 
-#phantoon{
+#phantoon {
   width: 40px;
   height: 58px;
   position: absolute;
@@ -79,8 +81,6 @@ body { background-color: #101010; cursor: default; }
   background-image: url(g4/ridley.png);
 }
 
-div { position: absolute; background-color: transparent; }
-
 .item { width: 48px; height: 48px; position: absolute; }
 .digit { width: 32px; height: 28px; bottom: -28px; }
 
@@ -100,7 +100,7 @@ div { position: absolute; background-color: transparent; }
 .active { z-index: 10; }
 .inactive { z-index: -5; }
 
-#ridley-strat {
+#ridley-strategy {
   width: 158px;
   height: 280px;
   top: 15;

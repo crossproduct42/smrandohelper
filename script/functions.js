@@ -52,7 +52,7 @@
         document.getElementById(x).className = bosses[x] ? 'true' : 'falseBoss';
     };
 
-    // Procedure for clicking the panel buttons in the middle
+    // Procedure for clicking the panel buttons in the menu
     window.toggle_panel = function(x) {
         document.getElementById('button-'+panels[active_panel]).className = 'panel-button falseBoss';
         document.getElementById('panel-'+panels[active_panel]).className = 'panel inactive';
@@ -90,14 +90,14 @@
         }
     };
 
-    // Solve for Ridley! Writes inside the ridley-strat <div> with best boss fight strategy!
+    // Solve for Ridley! Writes inside the ridley-strategy <div> with best boss fight strategy!
     window.ridley_calc = function() {
         var strategy = '';
 
         // No ammo?
         if (ammo.missile.value === 0 && ammo.super_missile.value === 0 && ammo.power_bomb.value === 0) {
             if (beam === 0) {
-                document.getElementById('ridley-strat').innerHTML = 'FIND SOME AMMO or CHARGE BEAM, N00B!';
+                document.getElementById('ridley-strategy').innerHTML = 'FIND SOME AMMO or CHARGE BEAM, N00B!';
                 return;
             }
 
@@ -105,7 +105,7 @@
             strategy += charges + ' charge shots.<br><br>'
             // Red phase
             strategy += ' (' + (charges - 9000/beam - 1) + ' shots after Ridley turns red)';
-            document.getElementById('ridley-strat').innerHTML = strategy;
+            document.getElementById('ridley-strategy').innerHTML = strategy;
             return;
         }
 
@@ -121,14 +121,14 @@
             else
                 strategy += 'Extra damage: ' + (max_damage-18000) + '<br>(That\'s '+Math.floor((max_damage-18000)/600)+' supers)<br><br>You got this!!';
 
-            document.getElementById('ridley-strat').innerHTML = strategy;
+            document.getElementById('ridley-strategy').innerHTML = strategy;
             return;
         }
 
         // Charge+Ice+Wave+Plasma = Beam or Supers
         if (beam === 900) {
             if (ammo.super_missile.value === 0) {
-                document.getElementById('ridley-strat').innerHTML = '20 charge shots.<br><br>(9 shots after Ridley turns red.)';
+                document.getElementById('ridley-strategy').innerHTML = '20 charge shots.<br><br>(9 shots after Ridley turns red.)';
                 return;
             }
 
@@ -150,14 +150,14 @@
                 strategy += supes + ' supers, then ' + (Math.ceil((18000-600*supes)/900)) + ' charge shots.<br>';
             }
             strategy += 'For every 3 misses' + beyond + ', add 2 charge shots.';
-            document.getElementById('ridley-strat').innerHTML = strategy;
+            document.getElementById('ridley-strategy').innerHTML = strategy;
             return;
         }
 
         // Other plasma combo (or the 4 other beams) = Supers, then beam
         if (beam >= 300) {
             if (ammo.super_missile.value === 0) {
-                document.getElementById('ridley-strat').innerHTML = (18000/beam) + ' charge shots.<br><br>('+(9000/beam-1)+' shots after Ridley turns red.)';
+                document.getElementById('ridley-strategy').innerHTML = (18000/beam) + ' charge shots.<br><br>('+(9000/beam-1)+' shots after Ridley turns red.)';
                 return;
             }
 
@@ -184,7 +184,7 @@
                 strategy += 's';
             strategy += '.';
 
-            document.getElementById('ridley-strat').innerHTML = strategy;
+            document.getElementById('ridley-strategy').innerHTML = strategy;
             return;
         }
 
@@ -196,7 +196,7 @@
             }
             strategy += '30 supers.<br><br>';
             strategy += 'For each miss' + beyond + ', add 6 missiles or '+(Math.round(6000/beam)/10)+' charge shots.';
-            document.getElementById('ridley-strat').innerHTML = strategy;
+            document.getElementById('ridley-strategy').innerHTML = strategy;
             return;
         }
 
@@ -204,7 +204,7 @@
         if (ammo.missile.value + 6*ammo.super_missile.value >= 180) {
             strategy += (180 - 6*ammo.super_missile.value) + ' missiles, then ' + ammo.super_missile.value + ' supers.<br><br>';
             strategy += '1 super<br>=<br>6 missiles<br>=<br>' +(Math.round(6000/beam)/10)+ ' charge shots';
-            document.getElementById('ridley-strat').innerHTML = strategy;
+            document.getElementById('ridley-strategy').innerHTML = strategy;
             return;
         }
 
@@ -225,7 +225,7 @@
 
             strategy += 'Shots per miss:<br>super = ' +(Math.round(6000/beam)/10);
             strategy += '<br>missile = ' +(Math.round(1000/beam)/10);
-            document.getElementById('ridley-strat').innerHTML = strategy;
+            document.getElementById('ridley-strategy').innerHTML = strategy;
             return;
         }
 
@@ -245,6 +245,6 @@
 
         strategy += 'Shots per miss:<br>super = ' +(Math.round(6000/beam)/10);
         strategy += '<br>missile = ' +(Math.round(1000/beam)/10);
-        document.getElementById('ridley-strat').innerHTML = strategy;
+        document.getElementById('ridley-strategy').innerHTML = strategy;
     };
 }(window));

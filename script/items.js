@@ -18,7 +18,7 @@
             y: 0
         },
 
-        supermissile: {
+        super_missile: {
             value: 0,
             icon: 'items/super.png',
             w: 64,
@@ -27,7 +27,7 @@
             y: 0
         },
 
-        powerbomb: {
+        power_bomb: {
             value: 0,
             icon: 'items/pbomb.png',
             w: 64,
@@ -101,7 +101,7 @@
             y: 201
         },
 
-        springball: {
+        spring_ball: {
             value: false,
             icon: 'items/springball.png',
             x: 190,
@@ -115,7 +115,7 @@
             y: 198
         },
 
-        hijump: {
+        hi_jump: {
             value: false,
             icon: 'items/hijump.png',
             x: 127,

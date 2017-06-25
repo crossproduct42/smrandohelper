@@ -62,7 +62,7 @@
       // All the other stuff
       item_list = Object.keys(items);
       for (var k = 0; k < item_list.length; k++) {
-        document.write('<span class="item false" id="'+item_list[k]+'" onClick="toggle(\''+item_list[k]+'\')"></span>');
+        document.write('<span class="item" id="'+item_list[k]+'" onClick="toggle(\''+item_list[k]+'\')"></span>');
 
         var current = document.getElementById(item_list[k]);
         current.style.backgroundImage = 'url('+items[item_list[k]].icon+')';

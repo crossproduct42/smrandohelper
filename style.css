@@ -84,7 +84,14 @@ div { position: absolute; background-color: transparent; }
 .boss { opacity: 0; }
 .boss.defeated { opacity: 1; }
 
-.item { width: 48px; height: 48px; position: absolute; }
+.item {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  opacity: .25;
+}
+.item.active { opacity: 1; }
+
 .digit { width: 32px; height: 28px; bottom: -28px; }
 
 .panel-button {
@@ -104,9 +111,6 @@ div { position: absolute; background-color: transparent; }
   display: none;
 }
 .panel.active { display: block; }
-
-.true { opacity: 1; }
-.false { opacity: .25; }
 
 #ridley-strategy {
   width: 158px;

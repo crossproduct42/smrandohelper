@@ -31,7 +31,7 @@
     // Toggles items on the tracker (besides ammo)
     window.toggle = function(x) {
         items[x].value = !items[x].value;
-        document.getElementById(x).className = 'item ' + items[x].value;
+        document.getElementById(x).className = items[x].value ? 'item active' : 'item';
 
         // put IF statement for beams later...
         beam = get_beam_damage();

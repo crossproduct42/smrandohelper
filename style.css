@@ -106,6 +106,12 @@ div { position: absolute; background-color: transparent; }
 }
 .panel-button.active { opacity: 1; }
 
+#panel-map { background-color: red; }
+#panel-ridley { background-image: url(overlay/ridleymath.png); }
+#panel-mbrain { background-color: green; }
+#panel-skill { background-color: blue; }
+#panel-option { background-color: purple; }
+
 .panel {
   width: 344px;
   height: 100%;

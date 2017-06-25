@@ -19,20 +19,6 @@ div { position: absolute; background-color: transparent; }
   background-color: black;
 }
 
-#menu {
-  width: 126px;
-  height: 288px;
-  top: 24px;
-  left: 350px;
-}
-
-#panels {
-  width: 0px;
-  height: 100%;
-  right: 0px;
-  background-color: red;
-}
-
 #g4 {
   width: 126px;
   height: 145px;
@@ -92,7 +78,19 @@ div { position: absolute; background-color: transparent; }
 }
 .item.active { opacity: 1; }
 
-.digit { width: 32px; height: 28px; bottom: -28px; }
+#menu {
+  width: 126px;
+  height: 288px;
+  top: 24px;
+  left: 350px;
+}
+
+#panels {
+  width: 0px;
+  height: 100%;
+  right: 0px;
+  background-color: red;
+}
 
 .panel-button {
   width: 126px;
@@ -121,3 +119,5 @@ div { position: absolute; background-color: transparent; }
   font-size: 20px;
   text-align: center;
 }
+
+.digit { width: 32px; height: 28px; bottom: -28px; }

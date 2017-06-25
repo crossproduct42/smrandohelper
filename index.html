@@ -39,14 +39,14 @@
           document.write('<div onClick="inc_ammo(\''+item_list[k]+'\',1)" style="width:100%; height:100%;"></div>');
 
           // ammo counters
-          document.write('<div class="digit" id="ammo-'+item_list[k]+'-1" style="background-image:url(numbers/0.png); right:0px;"></div>');
-          document.write('<div class="digit" id="ammo-'+item_list[k]+'-10" style="background-image:url(numbers/0.png); right:32px;"></div>');
+          document.write('<div class="digit-0" id="ammo-'+item_list[k]+'-1" style="right:0px;"></div>');
+          document.write('<div class="digit-0" id="ammo-'+item_list[k]+'-10" style="right:32px;"></div>');
         if (k === 0)
-          document.write('<div class="digit" id="ammo-'+item_list[k]+'-100" style="background-image:url(numbers/0.png);"></div>');
+          document.write('<div class="digit-0" id="ammo-'+item_list[k]+'-100"></div>');
 
           // ammo increment buttons
-          document.write('<div onClick="inc_ammo(\''+item_list[k]+'\',5)" style="background-image:url(numbers/plus.png); right:-20px; top:3px; width:20px; height:28px;"></div>');
-          document.write('<div onClick="inc_ammo(\''+item_list[k]+'\',-5)" style="background-image:url(numbers/minus.png); right:-20px; bottom:3px; width:20px; height:28px;"></div>');
+          document.write('<div class="plus" onClick="inc_ammo(\''+item_list[k]+'\',5)" style="top:3px;"></div>');
+          document.write('<div class="minus" onClick="inc_ammo(\''+item_list[k]+'\',-5)" style="bottom:3px;"></div>');
 
         document.write("</div>");
         var current = document.getElementById(item_list[k]);
@@ -87,8 +87,8 @@
 
       <!-- RIDLEY CALCULATOR -->
       <div id="panel-ridley" class="panel">
-        <div id="ridley-beam-100" class="digit" style="top:113; left:46; background-image:url(numbers/0.png);"></div>
-        <div id="ridley-beam-10" class="digit" style="top:113; left:78; background-image:url(numbers/0.png);"></div>
+        <div id="ridley-beam-100" class="digit-0" style="top:113; left:46;"></div>
+        <div id="ridley-beam-10" class="digit-0" style="top:113; left:78;"></div>
         <div id="ridley-strategy"></div>
       </div>
 

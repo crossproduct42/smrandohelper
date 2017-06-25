@@ -132,4 +132,17 @@ div { position: absolute; background-color: transparent; }
   text-align: center;
 }
 
-.digit { width: 32px; height: 28px; bottom: -28px; }
+[class*="digit-"] { width: 32px; height: 28px; bottom: -28px; }
+.digit-0 { background-image: url(numbers/0.png); }
+.digit-1 { background-image: url(numbers/1.png); }
+.digit-2 { background-image: url(numbers/2.png); }
+.digit-3 { background-image: url(numbers/3.png); }
+.digit-4 { background-image: url(numbers/4.png); }
+.digit-5 { background-image: url(numbers/5.png); }
+.digit-6 { background-image: url(numbers/6.png); }
+.digit-7 { background-image: url(numbers/7.png); }
+.digit-8 { background-image: url(numbers/8.png); }
+.digit-9 { background-image: url(numbers/9.png); }
+.plus, .minus { width: 20px; height: 28px; right: -20px; }
+.plus { background-image: url(numbers/plus.png); }
+.minus { background-image: url(numbers/minus.png); }

@@ -7,15 +7,15 @@
         // only missiles go over 100
         if (type === 'missile') {
             var hundreds = Math.floor(amount/100);
-            document.getElementById('ammo-missile-100').style.backgroundImage = 'url(numbers/'+hundreds+'.png)';
+            document.getElementById('ammo-missile-100').className = 'digit-'+hundreds;
             amount -= 100*hundreds;
         }
 
         var tens = Math.floor(amount/10);
-        document.getElementById('ammo-'+type+'-10').style.backgroundImage = 'url(numbers/'+tens+'.png)';
+        document.getElementById('ammo-'+type+'-10').className = 'digit-'+tens;
         amount -= 10*tens;
 
-        document.getElementById('ammo-'+type+'-1').style.backgroundImage = 'url(numbers/'+amount+'.png)';
+        document.getElementById('ammo-'+type+'-1').className = 'digit-'+amount;
     };
 
     // increments Missile, Super, or Power Bomb count
@@ -37,11 +37,11 @@
         beam = get_beam_damage();
         var amount = beam;
         var hundreds = Math.floor(amount/100);
-        document.getElementById('ridley-beam-100').style.backgroundImage = 'url(numbers/'+hundreds+'.png)';
+        document.getElementById('ridley-beam-100').className = 'digit-'+hundreds;
         amount -= 100*hundreds;
         // (beam damage always ends in 0.
         var tens = amount/10;
-        document.getElementById('ridley-beam-10').style.backgroundImage = 'url(numbers/'+tens+'.png)';
+        document.getElementById('ridley-beam-10').className = 'digit-'+tens;
 
         ridley_calc();
     };

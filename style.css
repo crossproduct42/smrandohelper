@@ -132,6 +132,43 @@ div { position: absolute; background-color: transparent; }
   text-align: center;
 }
 
+#missile {
+  width: 96;
+  height: 64;
+  top: 0;
+  left: 0;
+  background-image: url(items/missile.png);
+}
+#super-missile {
+  width: 64;
+  height: 64;
+  top: 0;
+  left: 130;
+  background-image: url(items/super.png);
+}
+#power-bomb {
+  width: 64;
+  height: 64;
+  top: 0;
+  left: 224;
+  background-image: url(items/pbomb.png);
+}
+
+#charge { top: 97; left: 8; background-image: url(items/charge.png); }
+#ice { top: 97; left: 69; background-image: url(items/ice.png); }
+#wave { top: 97; left: 130; background-image: url(items/wave.png); }
+#spazer { top: 97; left: 191; background-image: url(items/spazer.png); }
+#plasma { top: 97; left: 252; background-image: url(items/plasma.png); }
+#varia { top: 149; left: 130; background-image: url(items/varia.png); }
+#gravity { top: 149; left: 192; background-image: url(items/gravity.png); }
+#morph { top: 146; left: 252; background-image: url(items/morph.png); }
+#bombs { top: 201; left: 130; background-image: url(items/bomb.png); }
+#spring-ball { top: 201; left: 190; background-image: url(items/springball.png); }
+#screw { top: 198; left: 250; background-image: url(items/screw.png); }
+#hi-jump { top: 253; left: 127; background-image: url(items/hijump.png); }
+#space { top: 253; left: 190; background-image: url(items/space.png); }
+#speed { top: 251; left: 250; background-image: url(items/speed.png); }
+
 [class*="digit-"] { width: 32px; height: 28px; bottom: -28px; }
 .digit-0 { background-image: url(numbers/0.png); }
 .digit-1 { background-image: url(numbers/1.png); }

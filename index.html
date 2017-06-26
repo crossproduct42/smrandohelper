@@ -31,45 +31,49 @@
         <span id="ridley" onClick="toggle_boss('ridley')" class="boss"></span>
       </div>
 
-      <script>
-      // All the elements for Missile, Supers, Power Bombs
-      var item_list = Object.keys(ammo);
-      for (var k = 0; k < item_list.length; k++) {
-        document.write('<div id="'+item_list[k]+'">');
-          document.write('<div onClick="inc_ammo(\''+item_list[k]+'\',1)" style="width:100%; height:100%;"></div>');
+      <div id="missile">
+        <div onClick="inc_ammo('missile',1)" style="width:100%; height:100%;"></div>
 
-          // ammo counters
-          document.write('<div class="digit-0" id="ammo-'+item_list[k]+'-1" style="right:0px;"></div>');
-          document.write('<div class="digit-0" id="ammo-'+item_list[k]+'-10" style="right:32px;"></div>');
-        if (k === 0)
-          document.write('<div class="digit-0" id="ammo-'+item_list[k]+'-100"></div>');
+        <div class="digit-0" id="ammo-missile-1" style="right:0px;"></div>
+        <div class="digit-0" id="ammo-missile-10" style="right:32px;"></div>
+        <div class="digit-0" id="ammo-missile-100"></div>
 
-          // ammo increment buttons
-          document.write('<div class="plus" onClick="inc_ammo(\''+item_list[k]+'\',5)" style="top:3px;"></div>');
-          document.write('<div class="minus" onClick="inc_ammo(\''+item_list[k]+'\',-5)" style="bottom:3px;"></div>');
+        <div class="plus" onClick="inc_ammo('missile',5)" style="top:3px;"></div>
+        <div class="minus" onClick="inc_ammo('missile',-5)" style="bottom:3px;"></div>
+      </div>
+      <div id="super-missile">
+        <div onClick="inc_ammo('super-missile',1)" style="width:100%; height:100%;"></div>
 
-        document.write("</div>");
-        var current = document.getElementById(item_list[k]);
-        current.style.backgroundImage = 'url('+ammo[item_list[k]].icon+')';
-        current.style.width = ammo[item_list[k]].w;
-        current.style.height = ammo[item_list[k]].h;
-        current.style.left = ammo[item_list[k]].x;
-        current.style.top = ammo[item_list[k]].y;
+        <div class="digit-0" id="ammo-super-missile-1" style="right:0px;"></div>
+        <div class="digit-0" id="ammo-super-missile-10" style="right:32px;"></div>
 
-        display_ammo(item_list[k]);
-      }
+        <div class="plus" onClick="inc_ammo('super-missile',5)" style="top:3px;"></div>
+        <div class="minus" onClick="inc_ammo('super-missile',-5)" style="bottom:3px;"></div>
+      </div>
+      <div id="power-bomb">
+        <div onClick="inc_ammo('power-bomb',1)" style="width:100%; height:100%;"></div>
 
-      // All the other stuff
-      item_list = Object.keys(items);
-      for (var k = 0; k < item_list.length; k++) {
-        document.write('<span class="item" id="'+item_list[k]+'" onClick="toggle(\''+item_list[k]+'\')"></span>');
+        <div class="digit-0" id="ammo-power-bomb-1" style="right:0px;"></div>
+        <div class="digit-0" id="ammo-power-bomb-10" style="right:32px;"></div>
 
-        var current = document.getElementById(item_list[k]);
-        current.style.backgroundImage = 'url('+items[item_list[k]].icon+')';
-        current.style.left = items[item_list[k]].x;
-        current.style.top = items[item_list[k]].y;
-      }
-      </script>
+        <div class="plus" onClick="inc_ammo('power-bomb',5)" style="top:3px;"></div>
+        <div class="minus" onClick="inc_ammo('power-bomb',-5)" style="bottom:3px;"></div>
+      </div>
+
+      <span id="charge" class="item" onClick="toggle('charge')"></span>
+      <span id="ice" class="item" onClick="toggle('ice')"></span>
+      <span id="wave" class="item" onClick="toggle('wave')"></span>
+      <span id="spazer" class="item" onClick="toggle('spazer')"></span>
+      <span id="plasma" class="item" onClick="toggle('plasma')"></span>
+      <span id="varia" class="item" onClick="toggle('varia')"></span>
+      <span id="gravity" class="item" onClick="toggle('gravity')"></span>
+      <span id="morph" class="item" onClick="toggle('morph')"></span>
+      <span id="bombs" class="item" onClick="toggle('bombs')"></span>
+      <span id="spring-ball" class="item" onClick="toggle('spring-ball')"></span>
+      <span id="screw" class="item" onClick="toggle('screw')"></span>
+      <span id="hi-jump" class="item" onClick="toggle('hi-jump')"></span>
+      <span id="space" class="item" onClick="toggle('space')"></span>
+      <span id="speed" class="item" onClick="toggle('speed')"></span>
 
     </div>
 

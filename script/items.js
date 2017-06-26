@@ -9,131 +9,29 @@
     };
 
     window.ammo = {
-        missile: {
-            value: 0,
-            icon: 'items/missile.png',
-            w: 96,
-            h: 64,
-            x: 0,
-            y: 0
-        },
-
-        super_missile: {
-            value: 0,
-            icon: 'items/super.png',
-            w: 64,
-            h: 64,
-            x: 130,
-            y: 0
-        },
-
-        power_bomb: {
-            value: 0,
-            icon: 'items/pbomb.png',
-            w: 64,
-            h: 64,
-            x: 224,
-            y: 0
-        }
+        missile: 0,
+        'super-missile': 0,
+        'power-bomb': 0,
+        get super_missile() { return this['super-missile']; },
+        set super_missile(v) { this['super-missile'] = v; },
+        get power_bomb() { return this['power-bomb']; },
+        set power_bomb(v) { this['power-bomb'] = v; }
     };
 
     window.items = {
-        charge: {
-            value: false,
-            icon: 'items/charge.png',
-            x: 8,
-            y: 97
-        },
-
-        ice: {
-            value: false,
-            icon: 'items/ice.png',
-            x: 69,
-            y: 97
-        },
-
-        wave: {
-            value: false,
-            icon: 'items/wave.png',
-            x: 130,
-            y: 97
-        },
-
-        spazer: {
-            value: false,
-            icon: 'items/spazer.png',
-            x: 191,
-            y: 97
-        },
-
-        plasma: {
-            value: false,
-            icon: 'items/plasma.png',
-            x: 252,
-            y: 97
-        },
-
-        varia: {
-            value: false,
-            icon: 'items/varia.png',
-            x: 130,
-            y: 149
-        },
-
-        gravity: {
-            value: false,
-            icon: 'items/gravity.png',
-            x: 192,
-            y: 149
-        },
-
-        morph: {
-            value: false,
-            icon: 'items/morph.png',
-            x: 252,
-            y: 146
-        },
-
-        bombs: {
-            value: false,
-            icon: 'items/bomb.png',
-            x: 130,
-            y: 201
-        },
-
-        spring_ball: {
-            value: false,
-            icon: 'items/springball.png',
-            x: 190,
-            y: 201
-        },
-
-        screw: {
-            value: false,
-            icon: 'items/screw.png',
-            x: 250,
-            y: 198
-        },
-
-        hi_jump: {
-            value: false,
-            icon: 'items/hijump.png',
-            x: 127,
-            y: 253
-        },
-
-        space: {
-            value: false,
-            icon: 'items/space.png',
-            x: 190,
-            y: 253
-        },
-
-        speed: {
-            value: false,
-            icon: 'items/speed.png',
-            x: 250,
-            y: 251
-        }
+        charge: false,
+        ice: false,
+        wave: false,
+        spazer: false,
+        plasma: false,
+        varia: false,
+        gravity: false,
+        morph: false,
+        bombs: false,
+        'spring-ball': false,
+        screw: false,
+        'hi-jump': false,
+        space: false,
+        speed: false
     };
 }(window));

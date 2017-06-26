@@ -153,6 +153,7 @@ div { position: absolute; background-color: transparent; }
   left: 224;
   background-image: url(items/pbomb.png);
 }
+.click-area { width:100%; height:100%; }
 
 #charge { top: 97; left: 8; background-image: url(items/charge.png); }
 #ice { top: 97; left: 69; background-image: url(items/ice.png); }

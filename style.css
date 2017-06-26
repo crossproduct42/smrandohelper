@@ -8,7 +8,7 @@ div { position: absolute; background-color: transparent; }
   top: 1px;
   left: 1px;
   background-color: #202020;
-  background-image: url(overlay/full_border.png);
+  background-image: url(images/overlay/full_border.png);
 }
 
 #tracker {
@@ -24,7 +24,7 @@ div { position: absolute; background-color: transparent; }
   height: 145px;
   left: 0px;
   bottom: 3px;
-  background-image: url(g4/golden_four.png);
+  background-image: url(images/G4/golden_four.png);
 }
 
 #kraid {
@@ -34,7 +34,7 @@ div { position: absolute; background-color: transparent; }
   left: 0px;
   bottom: 4px;
   z-index: 1;
-  background-image: url(g4/kraid.png);
+  background-image: url(images/G4/kraid.png);
 }
 
 #phantoon {
@@ -44,7 +44,7 @@ div { position: absolute; background-color: transparent; }
   left: 46px;
   bottom: 22px;
   z-index: 2;
-  background-image: url(g4/phantoon.png);
+  background-image: url(images/G4/phantoon.png);
 }
 
 #draygon {
@@ -54,7 +54,7 @@ div { position: absolute; background-color: transparent; }
   right: 0px;
   bottom: 8px;
   z-index: 1;
-  background-image: url(g4/draygon.png);
+  background-image: url(images/G4/draygon.png);
 }
 
 #ridley {
@@ -64,7 +64,7 @@ div { position: absolute; background-color: transparent; }
   left: 36px;
   top: 0px;
   z-index: 3;
-  background-image: url(g4/ridley.png);
+  background-image: url(images/G4/ridley.png);
 }
 
 .boss { opacity: 0; }
@@ -85,11 +85,11 @@ div { position: absolute; background-color: transparent; }
   left: 350px;
 }
 
-#button-map { top:0px; background-image: url(overlay/button-map.png); }
-#button-ridley { top:60px; background-image: url(overlay/button-ridley.png); }
-#button-mbrain { top:120px; background-image: url(overlay/button-mbrain.png); }
-#button-skill { top:180px; background-image: url(overlay/button-skill.png); }
-#button-option { top:240px; background-image: url(overlay/button-option.png); }
+#button-map { top:0px; background-image: url(images/overlay/button-map.png); }
+#button-ridley { top:60px; background-image: url(images/overlay/button-ridley.png); }
+#button-mbrain { top:120px; background-image: url(images/overlay/button-mbrain.png); }
+#button-skill { top:180px; background-image: url(images/overlay/button-skill.png); }
+#button-option { top:240px; background-image: url(images/overlay/button-option.png); }
 
 #panels {
   width: 0px;
@@ -107,7 +107,7 @@ div { position: absolute; background-color: transparent; }
 .panel-button.active { opacity: 1; }
 
 #panel-map { background-color: red; }
-#panel-ridley { background-image: url(overlay/ridleymath.png); }
+#panel-ridley { background-image: url(images/overlay/ridleymath.png); }
 #panel-mbrain { background-color: green; }
 #panel-skill { background-color: blue; }
 #panel-option { background-color: purple; }
@@ -137,50 +137,50 @@ div { position: absolute; background-color: transparent; }
   height: 64;
   top: 0;
   left: 0;
-  background-image: url(items/missile.png);
+  background-image: url(images/items/missile.png);
 }
 #super-missile {
   width: 64;
   height: 64;
   top: 0;
   left: 130;
-  background-image: url(items/super.png);
+  background-image: url(images/items/super.png);
 }
 #power-bomb {
   width: 64;
   height: 64;
   top: 0;
   left: 224;
-  background-image: url(items/pbomb.png);
+  background-image: url(images/items/pbomb.png);
 }
 .click-area { width:100%; height:100%; }
 
-#charge { top: 97; left: 8; background-image: url(items/charge.png); }
-#ice { top: 97; left: 69; background-image: url(items/ice.png); }
-#wave { top: 97; left: 130; background-image: url(items/wave.png); }
-#spazer { top: 97; left: 191; background-image: url(items/spazer.png); }
-#plasma { top: 97; left: 252; background-image: url(items/plasma.png); }
-#varia { top: 149; left: 130; background-image: url(items/varia.png); }
-#gravity { top: 149; left: 192; background-image: url(items/gravity.png); }
-#morph { top: 146; left: 252; background-image: url(items/morph.png); }
-#bombs { top: 201; left: 130; background-image: url(items/bomb.png); }
-#spring-ball { top: 201; left: 190; background-image: url(items/springball.png); }
-#screw { top: 198; left: 250; background-image: url(items/screw.png); }
-#hi-jump { top: 253; left: 127; background-image: url(items/hijump.png); }
-#space { top: 253; left: 190; background-image: url(items/space.png); }
-#speed { top: 251; left: 250; background-image: url(items/speed.png); }
+#charge { top: 97; left: 8; background-image: url(images/items/charge.png); }
+#ice { top: 97; left: 69; background-image: url(images/items/ice.png); }
+#wave { top: 97; left: 130; background-image: url(images/items/wave.png); }
+#spazer { top: 97; left: 191; background-image: url(images/items/spazer.png); }
+#plasma { top: 97; left: 252; background-image: url(images/items/plasma.png); }
+#varia { top: 149; left: 130; background-image: url(images/items/varia.png); }
+#gravity { top: 149; left: 192; background-image: url(images/items/gravity.png); }
+#morph { top: 146; left: 252; background-image: url(images/items/morph.png); }
+#bombs { top: 201; left: 130; background-image: url(images/items/bomb.png); }
+#spring-ball { top: 201; left: 190; background-image: url(images/items/springball.png); }
+#screw { top: 198; left: 250; background-image: url(images/items/screw.png); }
+#hi-jump { top: 253; left: 127; background-image: url(images/items/hijump.png); }
+#space { top: 253; left: 190; background-image: url(images/items/space.png); }
+#speed { top: 251; left: 250; background-image: url(images/items/speed.png); }
 
 [class*="digit-"] { width: 32px; height: 28px; bottom: -28px; }
-.digit-0 { background-image: url(numbers/0.png); }
-.digit-1 { background-image: url(numbers/1.png); }
-.digit-2 { background-image: url(numbers/2.png); }
-.digit-3 { background-image: url(numbers/3.png); }
-.digit-4 { background-image: url(numbers/4.png); }
-.digit-5 { background-image: url(numbers/5.png); }
-.digit-6 { background-image: url(numbers/6.png); }
-.digit-7 { background-image: url(numbers/7.png); }
-.digit-8 { background-image: url(numbers/8.png); }
-.digit-9 { background-image: url(numbers/9.png); }
+.digit-0 { background-image: url(images/numbers/0.png); }
+.digit-1 { background-image: url(images/numbers/1.png); }
+.digit-2 { background-image: url(images/numbers/2.png); }
+.digit-3 { background-image: url(images/numbers/3.png); }
+.digit-4 { background-image: url(images/numbers/4.png); }
+.digit-5 { background-image: url(images/numbers/5.png); }
+.digit-6 { background-image: url(images/numbers/6.png); }
+.digit-7 { background-image: url(images/numbers/7.png); }
+.digit-8 { background-image: url(images/numbers/8.png); }
+.digit-9 { background-image: url(images/numbers/9.png); }
 .plus, .minus { width: 20px; height: 28px; right: -20px; }
-.plus { background-image: url(numbers/plus.png); }
-.minus { background-image: url(numbers/minus.png); }
+.plus { background-image: url(images/numbers/plus.png); }
+.minus { background-image: url(images/numbers/minus.png); }

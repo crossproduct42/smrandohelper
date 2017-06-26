@@ -1,6 +1,44 @@
 (function(window) {
     'use strict';
 
+    var panels = ['map', 'ridley', 'mbrain', 'skill', 'option'];
+    var active_panel = 0;
+    var beam = 0;
+
+    window.bosses = {
+        kraid: false,
+        phantoon: false,
+        draygon: false,
+        ridley: false
+    };
+
+    window.ammo = {
+        missile: 0,
+        'super-missile': 0,
+        'power-bomb': 0,
+        get super_missile() { return this['super-missile']; },
+        set super_missile(v) { this['super-missile'] = v; },
+        get power_bomb() { return this['power-bomb']; },
+        set power_bomb(v) { this['power-bomb'] = v; }
+    };
+
+    window.items = {
+        charge: false,
+        ice: false,
+        wave: false,
+        spazer: false,
+        plasma: false,
+        varia: false,
+        gravity: false,
+        morph: false,
+        bombs: false,
+        'spring-ball': false,
+        screw: false,
+        'hi-jump': false,
+        space: false,
+        speed: false
+    };
+
     window.display_ammo = function(type) {
         var amount = ammo[type];
 
@@ -246,5 +284,10 @@
         strategy += 'Shots per miss:<br>super = ' +(Math.round(6000/beam)/10);
         strategy += '<br>missile = ' +(Math.round(1000/beam)/10);
         document.getElementById('ridley-strategy').innerHTML = strategy;
+    };
+
+    window.start = function() {
+        toggle_panel(1);
+        ridley_calc();
     };
 }(window));

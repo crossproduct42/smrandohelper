@@ -1,29 +1,40 @@
-body { background-color: #101010; cursor: default; }
-
-div { position: absolute; background-color: transparent; }
-
-#app {
-  width: 826px;
-  height: 337px;
-  top: 1px;
-  left: 1px;
-  background-color: #202020;
-  background-image: url(images/overlay/full_border.png);
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  cursor: default;
 }
+
+* { box-sizing: border-box; }
+
+.row:before,
+.row:after { content: " "; display: table; }
+.row:after { clear: both; }
+.cell { position: relative; float: left; }
+
+#app { width: 826px; height: 337px; margin: 1px; }
 
 #tracker {
-  width: 308px;
-  height: 301px;
-  top: 18px;
-  left: 18px;
-  background-color: black;
+  width: 344px;
+  height: 337px;
+  padding: 18px;
+  background-image: url(images/overlay/frame.png);
 }
+
+#super-missile { margin-left: 14px; }
+#power-bomb { margin-left: 10px; }
+.inc-dec { padding: 3px 0; }
+.ammo-icon { width: 64px; height: 64px; }
+
+#missile .ammo-icon { width: 96px; background-image: url(images/items/missile.png); }
+#super-missile .ammo-icon { background-image: url(images/items/super.png); }
+#power-bomb .ammo-icon { background-image: url(images/items/pbomb.png); }
 
 #g4 {
   width: 126px;
   height: 145px;
-  left: 0px;
-  bottom: 3px;
+  margin-top: 8px;
+  position: absolute;
   background-image: url(images/G4/golden_four.png);
 }
 
@@ -70,41 +81,46 @@ div { position: absolute; background-color: transparent; }
 .boss { opacity: 0; }
 .boss.defeated { opacity: 1; }
 
-.item {
-  width: 48px;
-  height: 48px;
-  position: absolute;
-  opacity: .25;
-}
+.item { width: 48px; height: 48px; opacity: .25; }
 .item.active { opacity: 1; }
 
+#beams { margin: 5px 8px 0; }
+#beams.row > .cell + .cell { margin-left: 13px; }
+
+#upgrades { margin-top: 4px; margin-left: 130px; }
+#upgrades > .row { margin: 4px 0; }
+#upgrades > .row > .cell + .cell { margin-left: 13px; }
+
 #menu {
-  width: 126px;
-  height: 288px;
-  top: 24px;
-  left: 350px;
+  width: 138px;
+  height: 337px;
+  padding: 12px 6px;
 }
-
-#button-map { top:0px; background-image: url(images/overlay/button-map.png); }
-#button-ridley { top:60px; background-image: url(images/overlay/button-ridley.png); }
-#button-mbrain { top:120px; background-image: url(images/overlay/button-mbrain.png); }
-#button-skill { top:180px; background-image: url(images/overlay/button-skill.png); }
-#button-option { top:240px; background-image: url(images/overlay/button-option.png); }
-
-#panels {
-  width: 0px;
-  height: 100%;
-  right: 0px;
-  background-color: red;
-}
-
 .panel-button {
   width: 126px;
   height: 48px;
-  position: absolute;
-  opacity: 0;
+  margin: 12px 0;
 }
-.panel-button.active { opacity: 1; }
+
+#button-map { background-image: url(images/overlay/button-map.png); }
+#button-ridley { background-image: url(images/overlay/button-ridley.png); }
+#button-mbrain { background-image: url(images/overlay/button-mbrain.png); }
+#button-skill { background-image: url(images/overlay/button-skill.png); }
+#button-option { background-image: url(images/overlay/button-option.png); }
+#button-map.active { background-image: url(images/overlay/button-map-active.png); }
+#button-ridley.active { background-image: url(images/overlay/button-ridley-active.png); }
+#button-mbrain.active { background-image: url(images/overlay/button-mbrain-active.png); }
+#button-skill.active { background-image: url(images/overlay/button-skill-active.png); }
+#button-option.active { background-image: url(images/overlay/button-option-active.png); }
+
+.panel {
+  width: 344px;
+  height: 337px;
+  position: absolute;
+  color: white;
+  display: none;
+}
+.panel.active { display: block; }
 
 #panel-map { background-color: red; }
 #panel-ridley { background-image: url(images/overlay/ridleymath.png); }
@@ -112,65 +128,39 @@ div { position: absolute; background-color: transparent; }
 #panel-skill { background-color: blue; }
 #panel-option { background-color: purple; }
 
-.panel {
-  width: 344px;
-  height: 100%;
-  right: 0px;
-  color: white;
-  background-color: green;
-  display: none;
+#ridley-beam {
+  width: 64px;
+  height: 28px;
+  position: absolute;
+  top: 113px;
+  left: 46px;
 }
-.panel.active { display: block; }
-
 #ridley-strategy {
   width: 158px;
   height: 280px;
+  position: absolute;
   top: 15;
   right: 15;
-  background-color: transparent;
   font-size: 20px;
   text-align: center;
 }
 
-#missile {
-  width: 96;
-  height: 64;
-  top: 0;
-  left: 0;
-  background-image: url(images/items/missile.png);
-}
-#super-missile {
-  width: 64;
-  height: 64;
-  top: 0;
-  left: 130;
-  background-image: url(images/items/super.png);
-}
-#power-bomb {
-  width: 64;
-  height: 64;
-  top: 0;
-  left: 224;
-  background-image: url(images/items/pbomb.png);
-}
-.click-area { width:100%; height:100%; }
+#charge { background-image: url(images/items/charge.png); }
+#ice { background-image: url(images/items/ice.png); }
+#wave { background-image: url(images/items/wave.png); }
+#spazer { background-image: url(images/items/spazer.png); }
+#plasma { background-image: url(images/items/plasma.png); }
+#varia { background-image: url(images/items/varia.png); }
+#gravity { background-image: url(images/items/gravity.png); }
+#morph { background-image: url(images/items/morph.png); }
+#bombs { background-image: url(images/items/bomb.png); }
+#spring-ball { background-image: url(images/items/springball.png); }
+#screw { background-image: url(images/items/screw.png); }
+#hi-jump { background-image: url(images/items/hijump.png); }
+#space { background-image: url(images/items/space.png); }
+#speed { background-image: url(images/items/speed.png); }
 
-#charge { top: 97; left: 8; background-image: url(images/items/charge.png); }
-#ice { top: 97; left: 69; background-image: url(images/items/ice.png); }
-#wave { top: 97; left: 130; background-image: url(images/items/wave.png); }
-#spazer { top: 97; left: 191; background-image: url(images/items/spazer.png); }
-#plasma { top: 97; left: 252; background-image: url(images/items/plasma.png); }
-#varia { top: 149; left: 130; background-image: url(images/items/varia.png); }
-#gravity { top: 149; left: 192; background-image: url(images/items/gravity.png); }
-#morph { top: 146; left: 252; background-image: url(images/items/morph.png); }
-#bombs { top: 201; left: 130; background-image: url(images/items/bomb.png); }
-#spring-ball { top: 201; left: 190; background-image: url(images/items/springball.png); }
-#screw { top: 198; left: 250; background-image: url(images/items/screw.png); }
-#hi-jump { top: 253; left: 127; background-image: url(images/items/hijump.png); }
-#space { top: 253; left: 190; background-image: url(images/items/space.png); }
-#speed { top: 251; left: 250; background-image: url(images/items/speed.png); }
-
-[class*="digit-"] { width: 32px; height: 28px; bottom: -28px; }
+[class*="digit-"] { width: 32px; height: 28px; }
 .digit-0 { background-image: url(images/numbers/0.png); }
 .digit-1 { background-image: url(images/numbers/1.png); }
 .digit-2 { background-image: url(images/numbers/2.png); }
@@ -181,6 +171,6 @@ div { position: absolute; background-color: transparent; }
 .digit-7 { background-image: url(images/numbers/7.png); }
 .digit-8 { background-image: url(images/numbers/8.png); }
 .digit-9 { background-image: url(images/numbers/9.png); }
-.plus, .minus { width: 20px; height: 28px; right: -20px; }
+.plus, .minus { width: 20px; height: 28px; }
 .plus { background-image: url(images/numbers/plus.png); }
 .minus { background-image: url(images/numbers/minus.png); }

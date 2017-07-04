@@ -15,8 +15,8 @@
 </head>
 <body>
 
-  <div id="app" class="row">
-    <div id="tracker" class="cell">
+  <div class="row" id="app">
+    <div class="cell" id="tracker">
       
       <div class="row">
         <div class="cell" id="missile">
@@ -70,56 +70,56 @@
       </div>
 
       <div id="g4">
-        <div id="kraid" onClick="toggle_boss('kraid')" class="boss"></div>
-        <div id="phantoon" onClick="toggle_boss('phantoon')" class="boss"></div>
-        <div id="draygon" onClick="toggle_boss('draygon')" class="boss"></div>
-        <div id="ridley" onClick="toggle_boss('ridley')" class="boss"></div>
+        <div class="boss" id="kraid" onClick="toggle_boss('kraid')"></div>
+        <div class="boss" id="phantoon" onClick="toggle_boss('phantoon')"></div>
+        <div class="boss" id="draygon" onClick="toggle_boss('draygon')"></div>
+        <div class="boss" id="ridley" onClick="toggle_boss('ridley')"></div>
       </div>
 
       <div id="upgrades">
         <div class="row">
-          <div class="cell"><div id="varia" class="item" onClick="toggle('varia')"></div></div>
-          <div class="cell"><div id="gravity" class="item" onClick="toggle('gravity')"></div></div>
-          <div class="cell"><div id="morph" class="item" onClick="toggle('morph')"></div></div>
+          <div class="cell"><div class="item" id="varia" onClick="toggle('varia')"></div></div>
+          <div class="cell"><div class="item" id="gravity" onClick="toggle('gravity')"></div></div>
+          <div class="cell"><div class="item" id="morph" onClick="toggle('morph')"></div></div>
         </div>
         <div class="row">
-          <div class="cell"><div id="bombs" class="item" onClick="toggle('bombs')"></div></div>
-          <div class="cell"><div id="spring-ball" class="item" onClick="toggle('spring-ball')"></div></div>
-          <div class="cell"><div id="screw" class="item" onClick="toggle('screw')"></div></div>
+          <div class="cell"><div class="item" id="bombs" onClick="toggle('bombs')"></div></div>
+          <div class="cell"><div class="item" id="spring-ball" onClick="toggle('spring-ball')"></div></div>
+          <div class="cell"><div class="item" id="screw" onClick="toggle('screw')"></div></div>
         </div>
         <div class="row">
-          <div class="cell"><div id="hi-jump" class="item" onClick="toggle('hi-jump')"></div></div>
-          <div class="cell"><div id="space" class="item" onClick="toggle('space')"></div></div>
-          <div class="cell"><div id="speed" class="item" onClick="toggle('speed')"></div></div>
+          <div class="cell"><div class="item" id="hi-jump" onClick="toggle('hi-jump')"></div></div>
+          <div class="cell"><div class="item" id="space" onClick="toggle('space')"></div></div>
+          <div class="cell"><div class="item" id="speed" onClick="toggle('speed')"></div></div>
         </div>
       </div>
 
     </div>
 
     <!--- Buttons to switch the panels on the right side -->
-    <div id="menu" class="cell">
-      <div id="button-map" onClick="toggle_panel(0)" class="panel-button active"></div>
-      <div id="button-ridley" onClick="toggle_panel(1)" class="panel-button"></div>
-      <div id="button-mbrain" onClick="toggle_panel(2)" class="panel-button"></div>
-      <div id="button-skill" onClick="toggle_panel(3)" class="panel-button"></div>
-      <div id="button-option" onClick="toggle_panel(4)" class="panel-button"></div>
+    <div class="cell" id="menu">
+      <div class="panel-button active" id="button-map" onClick="toggle_panel(0)"></div>
+      <div class="panel-button" id="button-ridley" onClick="toggle_panel(1)"></div>
+      <div class="panel-button" id="button-mbrain" onClick="toggle_panel(2)"></div>
+      <div class="panel-button" id="button-skill" onClick="toggle_panel(3)"></div>
+      <div class="panel-button" id="button-option" onClick="toggle_panel(4)"></div>
     </div>
 
-    <div id="panels" class="cell">
-      <div id="panel-map" class="panel active"></div>
+    <div class="cell" id="panels">
+      <div class="panel active" id="panel-map"></div>
 
       <!-- RIDLEY CALCULATOR -->
-      <div id="panel-ridley" class="panel">
+      <div class="panel" id="panel-ridley">
         <div class="row" id="ridley-beam">
-          <div class="cell"><div id="ridley-beam-100" class="digit-0"></div></div>
-          <div class="cell"><div id="ridley-beam-10" class="digit-0"></div></div>
+          <div class="cell"><div class="digit-0" id="ridley-beam-100"></div></div>
+          <div class="cell"><div class="digit-0" id="ridley-beam-10"></div></div>
         </div>
         <div id="ridley-strategy"></div>
       </div>
 
-      <div id="panel-mbrain" class="panel"></div>
-      <div id="panel-skill" class="panel"></div>
-      <div id="panel-option" class="panel"></div>
+      <div class="panel" id="panel-mbrain"></div>
+      <div class="panel" id="panel-skill"></div>
+      <div class="panel" id="panel-option"></div>
     </div>
   </div>
 

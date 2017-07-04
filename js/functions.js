@@ -44,8 +44,6 @@
             .forEach(function(digit, i) { digit.className = 'digit-'+amount[i]; });
     };
 
-    function pad(x, n) { return ('' + (1000 + x)).substring(4-n, x.length); }
-
     // increments Missile, Super, or Power Bomb count
     window.inc_ammo = function(type, amount) {
         ammo[type] += amount;
@@ -63,16 +61,14 @@
 
         // put IF statement for beams later...
         beam = get_beam_damage();
-        var amount = beam;
-        var hundreds = Math.floor(amount/100);
-        document.getElementById('ridley-beam-100').className = 'digit-'+hundreds;
-        amount -= 100*hundreds;
-        // (beam damage always ends in 0.
-        var tens = amount/10;
-        document.getElementById('ridley-beam-10').className = 'digit-'+tens;
+        var amount = pad(beam/10, 2); // The 1 digit is always zero, and thus ignored
+        document.querySelectorAll('#ridley-beam [class*="digit-"]')
+            .forEach(function(digit, i) { digit.className = 'digit-'+amount[i]; });
 
         ridley_calc();
     };
+
+    function pad(x, n) { return ('' + (1000 + x)).substring(4-n, x.length); }
 
     // Toggles the Golden Statues
     window.toggle_boss = function(x) {
@@ -83,12 +79,12 @@
     // Procedure for clicking the panel buttons in the menu
     window.toggle_panel = function(x) {
         document.querySelectorAll('#menu .button')
-            .forEach(function(each) { each.classList.toggle('active', false); });
+            .forEach(function(each) { each.classList.remove('active'); });
         document.querySelectorAll('#panels .panel')
-            .forEach(function(each) { each.classList.toggle('active', false); });
+            .forEach(function(each) { each.classList.remove('active'); });
 
-        document.querySelector('#menu '+panels[x]).classList.toggle('active', true);
-        document.querySelector('#panels '+panels[x]).classList.toggle('active', true);
+        document.querySelector('#menu '+panels[x]).classList.add('active');
+        document.querySelector('#panels '+panels[x]).classList.add('active');
     };
 
     window.get_beam_damage = function() {

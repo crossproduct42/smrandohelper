@@ -98,18 +98,18 @@
 
     <!--- Buttons to switch the panels on the right side -->
     <div class="cell" id="menu">
-      <div class="panel-button active" id="button-map" onClick="toggle_panel(0)"></div>
-      <div class="panel-button" id="button-ridley" onClick="toggle_panel(1)"></div>
-      <div class="panel-button" id="button-mbrain" onClick="toggle_panel(2)"></div>
-      <div class="panel-button" id="button-skill" onClick="toggle_panel(3)"></div>
-      <div class="panel-button" id="button-option" onClick="toggle_panel(4)"></div>
+      <div class="button map active" onClick="toggle_panel(0)"></div>
+      <div class="button ridley" onClick="toggle_panel(1)"></div>
+      <div class="button mbrain" onClick="toggle_panel(2)"></div>
+      <div class="button skill" onClick="toggle_panel(3)"></div>
+      <div class="button option" onClick="toggle_panel(4)"></div>
     </div>
 
     <div class="cell" id="panels">
-      <div class="panel active" id="panel-map"></div>
+      <div class="panel map active"></div>
 
       <!-- RIDLEY CALCULATOR -->
-      <div class="panel" id="panel-ridley">
+      <div class="panel ridley">
         <div class="row" id="ridley-beam">
           <div class="cell"><div class="digit-0" id="ridley-beam-100"></div></div>
           <div class="cell"><div class="digit-0" id="ridley-beam-10"></div></div>
@@ -117,9 +117,9 @@
         <div id="ridley-strategy"></div>
       </div>
 
-      <div class="panel" id="panel-mbrain"></div>
-      <div class="panel" id="panel-skill"></div>
-      <div class="panel" id="panel-option"></div>
+      <div class="panel mbrain"></div>
+      <div class="panel skill"></div>
+      <div class="panel option"></div>
     </div>
   </div>
 

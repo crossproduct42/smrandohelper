@@ -1,8 +1,7 @@
 (function(window) {
     'use strict';
 
-    var panels = ['map', 'ridley', 'mbrain', 'skill', 'option'];
-    var active_panel = 0;
+    var panels = ['.map', '.ridley', '.mbrain', '.skill', '.option'];
     var beam = 0;
 
     window.bosses = {
@@ -92,12 +91,13 @@
 
     // Procedure for clicking the panel buttons in the menu
     window.toggle_panel = function(x) {
-        document.getElementById('button-'+panels[active_panel]).className = 'panel-button';
-        document.getElementById('panel-'+panels[active_panel]).className = 'panel';
+        document.querySelectorAll('#menu .button')
+            .forEach(function(each) { each.classList.toggle('active', false); });
+        document.querySelectorAll('#panels .panel')
+            .forEach(function(each) { each.classList.toggle('active', false); });
 
-        document.getElementById('button-'+panels[x]).className = 'panel-button active';
-        document.getElementById('panel-'+panels[x]).className = 'panel active';
-        active_panel = x;
+        document.querySelector('#menu '+panels[x]).classList.toggle('active', true);
+        document.querySelector('#panels '+panels[x]).classList.toggle('active', true);
     };
 
     window.get_beam_damage = function() {

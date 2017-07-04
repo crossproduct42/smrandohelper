@@ -96,22 +96,22 @@ body {
   height: 337px;
   padding: 12px 6px;
 }
-.panel-button {
+#menu .button {
   width: 126px;
   height: 48px;
   margin: 12px 0;
 }
 
-#button-map { background-image: url(images/overlay/button-map.png); }
-#button-ridley { background-image: url(images/overlay/button-ridley.png); }
-#button-mbrain { background-image: url(images/overlay/button-mbrain.png); }
-#button-skill { background-image: url(images/overlay/button-skill.png); }
-#button-option { background-image: url(images/overlay/button-option.png); }
-#button-map.active { background-image: url(images/overlay/button-map-active.png); }
-#button-ridley.active { background-image: url(images/overlay/button-ridley-active.png); }
-#button-mbrain.active { background-image: url(images/overlay/button-mbrain-active.png); }
-#button-skill.active { background-image: url(images/overlay/button-skill-active.png); }
-#button-option.active { background-image: url(images/overlay/button-option-active.png); }
+#menu .map { background-image: url(images/overlay/button-map.png); }
+#menu .ridley { background-image: url(images/overlay/button-ridley.png); }
+#menu .mbrain { background-image: url(images/overlay/button-mbrain.png); }
+#menu .skill { background-image: url(images/overlay/button-skill.png); }
+#menu .option { background-image: url(images/overlay/button-option.png); }
+#menu .map.active { background-image: url(images/overlay/button-map-active.png); }
+#menu .ridley.active { background-image: url(images/overlay/button-ridley-active.png); }
+#menu .mbrain.active { background-image: url(images/overlay/button-mbrain-active.png); }
+#menu .skill.active { background-image: url(images/overlay/button-skill-active.png); }
+#menu .option.active { background-image: url(images/overlay/button-option-active.png); }
 
 .panel {
   width: 344px;
@@ -122,11 +122,11 @@ body {
 }
 .panel.active { display: block; }
 
-#panel-map { background-color: red; }
-#panel-ridley { background-image: url(images/overlay/ridleymath.png); }
-#panel-mbrain { background-color: green; }
-#panel-skill { background-color: blue; }
-#panel-option { background-color: purple; }
+#panels .map { background-color: red; }
+#panels .ridley { background-image: url(images/overlay/ridleymath.png); }
+#panels .mbrain { background-color: green; }
+#panels .skill { background-color: blue; }
+#panels .option { background-color: purple; }
 
 #ridley-beam {
   width: 64px;

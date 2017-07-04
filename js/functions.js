@@ -39,21 +39,12 @@
     };
 
     window.display_ammo = function(type) {
-        var amount = ammo[type];
-
-        // only missiles go over 100
-        if (type === 'missile') {
-            var hundreds = Math.floor(amount/100);
-            document.getElementById('ammo-missile-100').className = 'digit-'+hundreds;
-            amount -= 100*hundreds;
-        }
-
-        var tens = Math.floor(amount/10);
-        document.getElementById('ammo-'+type+'-10').className = 'digit-'+tens;
-        amount -= 10*tens;
-
-        document.getElementById('ammo-'+type+'-1').className = 'digit-'+amount;
+        var amount = pad(ammo[type], type === 'missile' ? 3 : 2);
+        document.querySelectorAll('#'+type+' [class*="digit-"]')
+            .forEach(function(digit, i) { digit.className = 'digit-'+amount[i]; });
     };
+
+    function pad(x, n) { return ('' + (1000 + x)).substring(4-n, x.length); }
 
     // increments Missile, Super, or Power Bomb count
     window.inc_ammo = function(type, amount) {

@@ -89,30 +89,25 @@
 
     window.get_beam_damage = function() {
         if (!items.charge) return 0;
-
-        var combo = 1; // charge
-        if (items.ice) combo += 2;
-        if (items.wave) combo += 4;
-        if (items.spazer && !items.plasma) combo += 8;
-        if (items.plasma) combo += 16;
-
-        switch(combo) {
-            case 1: return 60; //charge
-            case 3: return 90; //charge + ice
-            case 5: return 150; //charge + wave
-            case 7: return 180; //charge + ice + wave
-            case 9: return 120; //charge + spazer
-            case 11: return 180; //charge + ice + spazer
-            case 13: return 210; //charge + wave + spazer
-            case 15: return 300; //charge + ice + wave + spazer
-
-            case 17: return 450; //charge + plasma
-            case 19: return 600; //charge + ice + plasma
-            case 21: return 750; //charge + wave + plasma
-            case 23: return 900; //charge + ice + wave + plasma
-
-            default: return 0; // No Charge
-        }
+        return [
+            60, // charge
+            90, // charge + ice
+            150, // charge + wave
+            180, // charge + ice + wave
+            120, // charge + spazer
+            180, // charge + ice + spazer
+            210, // charge + wave + spazer
+            300, // charge + ice + wave + spazer
+            450, // charge + plasma
+            600, // charge + ice + plasma
+            750, // charge + wave + plasma
+            900, // charge + ice + wave + plasma
+        ][
+            (items.ice ? 1 : 0) +
+            (items.wave ? 2 : 0) +
+            (items.spazer || items.plasma ? 4 : 0) +
+            (items.plasma ? 4 : 0)
+        ];
     };
 
     // Solve for Ridley! Writes inside the ridley-strategy <div> with best boss fight strategy!

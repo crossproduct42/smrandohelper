@@ -110,163 +110,170 @@
         ];
     };
 
-    // Solve for Ridley! Writes inside the ridley-strategy <div> with best boss fight strategy!
     window.ridley_calc = function() {
-        var strategy = '';
+        var no_ammo = !ammo.missile && !ammo.super_missile && !ammo.power_bomb;
+        var strategy = 
+            no_ammo && !beam ? 'FIND SOME AMMO or CHARGE BEAM, N00B!' :
+            no_ammo ? ridley_no_ammo() :
+            !beam ? ridley_only_ammo() :
+            // charge + ice + wave + plasma
+            beam === 900 ?
+                !ammo.super_missile ? '20 charge shots.\n\n(9 shots after Ridley turns red.)' :
+                ridley_strong_beam_and_supers() :
+            beam >= 300 ?
+                !ammo.super_missile ? ridley_medium_beam_no_supers() :
+                ridley_medium_beam_and_supers() :
+            // Weaker than charge + ice + wave + spazer
+            ammo.super_missile >= 30 ? ridley_weak_beam_but_enough_supers() :
+            ammo.missile + 6*ammo.super_missile >= 180 ? ridley_weak_beam_but_enough_missiles() :
+            ammo.missile + 6*ammo.super_missile > 90 ? ridley_weak_beam_missiles_before_red() :
+            ridley_weak_beam_missiles_after_red();
 
-        // No ammo?
-        if (ammo.missile === 0 && ammo.super_missile === 0 && ammo.power_bomb === 0) {
-            if (beam === 0) {
-                document.getElementById('ridley-strategy').innerHTML = 'FIND SOME AMMO or CHARGE BEAM, N00B!';
-                return;
-            }
-
-            var charges = Math.ceil(18000/beam);
-            strategy += charges + ' charge shots.<br><br>'
-            // Red phase
-            strategy += ' (' + (charges - 9000/beam - 1) + ' shots after Ridley turns red)';
-            document.getElementById('ridley-strategy').innerHTML = strategy;
-            return;
-        }
-
-        // No charge beam = Ammo only
-        if (beam === 0) {
-            strategy = 'NO CHARGE BEAM!<hr>Maxiumum damage: ';
-            var max_damage = 100*ammo.missile + 600*ammo.super_missile + 400*ammo.power_bomb;
-            strategy += max_damage + '<br><br>';
-            if (max_damage < 18000)
-                strategy += 'Not enough ammo to kill Ridley!';
-            else if (max_damage === 18000)
-                strategy += 'Just enough... DON\'T BLOW IT!';
-            else
-                strategy += 'Extra damage: ' + (max_damage-18000) + '<br>(That\'s '+Math.floor((max_damage-18000)/600)+' supers)<br><br>You got this!!';
-
-            document.getElementById('ridley-strategy').innerHTML = strategy;
-            return;
-        }
-
-        // Charge+Ice+Wave+Plasma = Beam or Supers
-        if (beam === 900) {
-            if (ammo.super_missile === 0) {
-                document.getElementById('ridley-strategy').innerHTML = '20 charge shots.<br><br>(9 shots after Ridley turns red.)';
-                return;
-            }
-
-            strategy = '20 charge shots<br><br>>> OR << <br><br>';
-            var beyond = '';
-
-            if (ammo.super_missile >= 30) {
-                if (ammo.super_missile > 30) {
-                    beyond = ' (beyond '+(ammo.super_missile-30)+')';
-                }
-                strategy += '30 supers. ';
-            } else {
-                var theOddOne = 0;
-                if (ammo.super_missile % 3 === 1) {
-                    theOddOne = 1;
-                    beyond = ' (beyond 1)';
-                }
-                var supes = ammo.super_missile - theOddOne;
-                strategy += supes + ' supers, then ' + (Math.ceil((18000-600*supes)/900)) + ' charge shots.<br>';
-            }
-            strategy += 'For every 3 misses' + beyond + ', add 2 charge shots.';
-            document.getElementById('ridley-strategy').innerHTML = strategy;
-            return;
-        }
-
-        // Other plasma combo (or the 4 other beams) = Supers, then beam
-        if (beam >= 300) {
-            if (ammo.super_missile === 0) {
-                document.getElementById('ridley-strategy').innerHTML = (18000/beam) + ' charge shots.<br><br>('+(9000/beam-1)+' shots after Ridley turns red.)';
-                return;
-            }
-
-            var beyond = '';
-
-            if (ammo.super_missile >= 30) {
-                if (ammo.super_missile > 30) {
-                    beyond = ' (beyond '+(ammo.super_missile-30)+')';
-                }
-                strategy += '30 supers.<br><br>';
-            } else {
-                var supes = ammo.super_missile;
-                var charges = Math.ceil((18000-600*supes)/beam);
-                strategy += charges + ' charge shots'
-                // Red phase
-                if (ammo.super_missile < 15) {
-                    strategy += ' (' + (charges - 9000/beam - 1) + ' shots after Ridley turns red)';
-                }
-                strategy += ', then ' + supes + ' supers.<br><br>';
-            }
-
-            strategy += 'For each miss' + beyond + ', add '+(Math.round(6000/beam)/10)+' charge shot';
-            if (beam !== 600)
-                strategy += 's';
-            strategy += '.';
-
-            document.getElementById('ridley-strategy').innerHTML = strategy;
-            return;
-        }
-
-        // any beam combo less than 300 damage
-        if (ammo.super_missile >= 30) {
-            var beyond = '';
-            if (ammo.super_missile > 30) {
-                beyond = ' (beyond '+(ammo.super_missile-30)+')';
-            }
-            strategy += '30 supers.<br><br>';
-            strategy += 'For each miss' + beyond + ', add 6 missiles or '+(Math.round(6000/beam)/10)+' charge shots.';
-            document.getElementById('ridley-strategy').innerHTML = strategy;
-            return;
-        }
-
-        // Enough missiles + supers?
-        if (ammo.missile + 6*ammo.super_missile >= 180) {
-            strategy += (180 - 6*ammo.super_missile) + ' missiles, then ' + ammo.super_missile + ' supers.<br><br>';
-            strategy += '1 super<br>=<br>6 missiles<br>=<br>' +(Math.round(6000/beam)/10)+ ' charge shots';
-            document.getElementById('ridley-strategy').innerHTML = strategy;
-            return;
-        }
-
-        // using missiles before Red Phase...
-        if (ammo.missile + 6*ammo.super_missile > 90) {
-            var hp = 18000 - 600*ammo.super_missile - 100*ammo.missile;
-            // Use Power Bombs?
-            if (ammo.power_bomb > 0 && beam < 100) {
-                var pbdam = Math.min(hp, 400*ammo.power_bomb);
-                hp -= pbdam;
-                pbdam = Math.ceil(pbdam/200);
-                strategy += 'PB for ' + pbdam + ' hits. ('+(Math.round(2000/beam)/10)+' shots per miss)<br><br>Then, ';
-            }
-            if (hp > 0) {
-                strategy += Math.ceil(hp/beam) + ' shots.<br><br>Then, ';
-            }
-            strategy += 'use missiles.<br><br>'
-
-            strategy += 'Shots per miss:<br>super = ' +(Math.round(6000/beam)/10);
-            strategy += '<br>missile = ' +(Math.round(1000/beam)/10);
-            document.getElementById('ridley-strategy').innerHTML = strategy;
-            return;
-        }
-
-        // Start Missiles after Red Phase
-        strategy += 'Use ';
-        if (ammo.power_bomb > 0 && beam < 100) {
-            strategy += 'Power Bombs and ';
-        }
-        strategy += 'charge shots.<hr>RED RIDLEY<hr>';
-
-        hp = 9000 - 600*ammo.super_missile - 100*ammo.missile;
-        if (hp > 0) {
-            strategy += Math.ceil(hp/beam) + ' shots.<br><br>';
-        }
-
-        strategy += 'Then, use missiles.<br><br>'
-
-        strategy += 'Shots per miss:<br>super = ' +(Math.round(6000/beam)/10);
-        strategy += '<br>missile = ' +(Math.round(1000/beam)/10);
-        document.getElementById('ridley-strategy').innerHTML = strategy;
+        document.getElementById('ridley-strategy').innerHTML = strategy
+            .replace(/---/g, '<hr>')
+            .replace(/\n/g, '<br>');
     };
+
+    function ridley_no_ammo() {
+        var charges = Math.ceil(18000/beam);
+        return template('{charges} charge shots.\n\n({red} shots after Ridley turns red.)', {
+            charges: charges,
+            red: charges - 9000/beam - 1
+        });
+    }
+
+    function ridley_only_ammo() {
+        var max_dmg = 100*ammo.missile + 600*ammo.super_missile + 400*ammo.power_bomb;
+        return template(
+            'NO CHARGE BEAM!---Maximum damage: {dmg}\n\n' +
+            '{less:Not enough ammo to kill Ridley!}' +
+            '{enough:Just enough... DON\'T BLOW IT!}' +
+            '{more:Extra damage: {extra}\n(That\'s {supers} supers)\n\nYou got this!!}', {
+                dmg: max_dmg,
+                less: max_dmg < 18000,
+                enough: max_dmg === 18000,
+                more: { _: max_dmg > 18000,
+                    extra: max_dmg - 18000,
+                    supers: Math.floor((max_dmg - 18000)/600)
+                }
+            });
+    }
+
+    function ridley_strong_beam_and_supers() {
+        var extras = ammo.super_missile > 30 ? ammo.super_missile - 30 :
+            ammo.super_missile < 30 && ammo.super_missile % 3 === 1 ? 1 : 0,
+            supers = ammo.super_missile - extras;
+        return template(
+            '20 charge shots.\n\n' +
+            '>> OR <<\n\n' +
+            '{supers} supers{then_charges:, then {charges} charge shots.\n|. }' +
+            'For every 3 misses{beyond: (beyond {extras})}, add 2 charge shots.', {
+                supers: ammo.super_missile >= 30 ? 30 : supers,
+                then_charges: { _: ammo.super_missile < 30,
+                    charges: Math.ceil((18000 - 600*supers)/900)
+                },
+                beyond: { _: extras,
+                    extras: extras
+                }
+            });
+    }
+
+    function ridley_medium_beam_no_supers() {
+        return template('{charges} charge shots.\n\n({red} shots after Ridley turns red.)', {
+            charges: 18000/beam,
+            red: 9000/beam - 1
+        });
+    }
+
+    function ridley_medium_beam_and_supers() {
+        var extras = ammo.super_missile > 30 ? ammo.super_missile - 30 : 0,
+            supers = ammo.super_missile,
+            charges = Math.ceil((18000 - 600*supers)/beam);
+        return template(
+            '{few_supers:{charges} charge shots{red: ({charges} shots after Ridley turns red)}, then }{supers} supers.\n\n' +
+            'For each miss{beyond: (beyond {extras})}, add {add} charge shot{pl:s}.', {
+                few_supers: { _: ammo.super_missile < 30,
+                    charges: charges,
+                    red: { _: ammo.super_missile < 15,
+                        charges: charges - 9000/beam - 1
+                    }
+                },
+                supers: supers,
+                beyond: { _: extras,
+                    extras: extras
+                },
+                add: Math.round(6000/beam)/10,
+                pl: beam !== 600
+            });
+    }
+
+    function ridley_weak_beam_but_enough_supers() {
+        return template(
+            '30 supers.\n\n' +
+            'For each miss{beyond: (beyond {extras})}, add 6 missiles or {charges} charge shots.', {
+                beyond: { _: ammo.super_missile > 30,
+                    extras: ammo.super_missile - 30
+                },
+                charges: Math.round(6000/beam)/10
+            });
+    }
+
+    function ridley_weak_beam_but_enough_missiles() {
+        return template(
+            '{missiles} missiles, then {supers} supers.\n\n' +
+            '1 super\n=\n6 missiles\n=\n{charges} charge shots', {
+                missiles: 180 - 6*ammo.super_missile,
+                supers: ammo.super_missile,
+                charges: Math.round(6000/beam)/10
+            });
+    }
+
+    function ridley_weak_beam_missiles_before_red() {
+        var hp = 18000 - 600*ammo.super_missile - 100*ammo.missile,
+            pb_dmg = Math.min(hp, 400*ammo.power_bomb),
+            use_pb = ammo.power_bomb > 0 && beam < 100;
+        hp -= use_pb ? pb_dmg : 0;
+        return template(
+            '{power_bomb:PB for {hits} hits. ({charges} shots per miss)\n\nThen, }' +
+            '{then_charges:{charges} shots.\n\nThen, }use missiles.\n\n' +
+            '{table}', {
+                power_bomb: { _: use_pb,
+                    hits: Math.ceil(pb_dmg/200),
+                    charges: Math.round(2000/beam)/10
+                },
+                then_charges: { _: hp > 0,
+                    charges: Math.ceil(hp/beam)
+                },
+                table: ridley_miss_table()
+            });
+    }
+
+    function ridley_weak_beam_missiles_after_red() {
+        var hp = 9000 - 600*ammo.super_missile - 100*ammo.missile,
+            use_pb = ammo.power_bomb > 0 && beam < 100;
+        return template(
+            'Use {pb:Power Bombs and }charge shots.' +
+            '---RED RIDLEY---' +
+            '{charges:{charges} shots.\n\n}' +
+            'Then, use missiles.\n\n' +
+            '{table}', {
+                pb: use_pb,
+                charges: { _: hp > 0,
+                    charges: Math.ceil(hp/beam)
+                },
+                table: ridley_miss_table()
+            });
+    }
+
+    function ridley_miss_table() {
+        return template(
+            'Shots per miss:\n' +
+            'super = {super_charges}\n' +
+            'missile = {missile_charges}', {
+                super_charges: Math.round(6000/beam)/10,
+                missile_charges: Math.round(1000/beam)/10
+            });
+    }
 
     window.start = function() {
         toggle_panel(1);

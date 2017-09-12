@@ -13,7 +13,7 @@ body {
 .row:after { clear: both; }
 .cell { position: relative; float: left; }
 
-#app { width: 826px; height: 337px; margin: 1px; }
+#app { width: 826px; height: 337px; }
 
 #tracker {
   width: 344px;

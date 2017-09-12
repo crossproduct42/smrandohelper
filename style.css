@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
   cursor: default;
 }
 
@@ -141,8 +142,15 @@ body {
   position: absolute;
   top: 15;
   right: 15;
-  font-size: 20px;
+  font-size: 18px !important;
   text-align: center;
+}
+#ridley-note {
+  width: 140px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 16px !important;
 }
 
 #charge { background-image: url(images/items/charge.png); }

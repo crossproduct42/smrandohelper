@@ -3,11 +3,21 @@
   <title>launching</title>
 
   <script>
-  open('tracker.html', '', 'width=826,height=337,titlebar=0,menubar=0,toolbar=0,scrollbars=0,resizable=0');
-  setTimeout('window.close()', 5000);
+  function launch_tracker() {
+    open('tracker.html', '', 'width=826,height=337,titlebar=0,menubar=0,toolbar=0,scrollbars=0,resizable=0');
+    setTimeout('window.close()', 5000);
+  }
+
+  window.start = function() {
+    document.getElementById('launch').addEventListener('click', launch_tracker);
+  };
   </script>
 </head>
 <body>
+
+  <button type="button" id="launch">Launch</button>
+
+  <script>start()</script>
 
 </body>
 </html>
